@@ -27,6 +27,23 @@ and the skill triggers on its own.
 - A Google Slides deck in the branding template, with speaker notes and sources per slide
 - For hackathons and workshops: a facilitator run-of-show with wall-clock timings, checkpoint gates, and
   fallbacks for a broken environment
+- A handover that reports what was checked: slides whose text was rewritten to fit, diagrams reused versus
+  reserved for you to paste, and for non-English decks, how much came from existing material versus translation
+
+## Layout, fit, and diagrams
+
+These decks go in front of the partner's customers, so two things are enforced rather than hoped for.
+
+**Text fits the placeholder.** Budgets are per placeholder and counted in characters, scaled by language, and
+the build ends with a fit check that reads back what actually landed in each element and rewrites the
+overflows. Fonts are never shrunk and text is never truncated to fit; long content moves to the speaker notes,
+which is what they are for. There are also rhythm rules: no two text-heavy slides adjacent, a visual or
+section break at least every fourth slide, and section breaks at act boundaries.
+
+**Diagrams get reused, not redrawn.** For the architecture anchor and any conceptual diagram, the skill
+searches existing internal decks first, and embeds the image when it is reachable. When it isn't, it reserves
+the slide and tells you exactly which source slide to paste, rather than quietly turning the diagram into a
+bullet list. Hand-drawn shape diagrams are the last resort and are held to strict geometry.
 
 ## How it adapts
 
@@ -49,6 +66,12 @@ names stay in English, and dbt stays lowercase in every language, German include
 
 Word budgets scale per language (German runs ~30% longer and is where layouts break; Japanese is counted in
 characters), and speaker notes can be a different language from the slides when a local co-presenter delivers.
+
+**The language question is asked in the first round, always.** For a non-English deck the research changes too,
+not just the writing: the skill looks for approved internal material already in that language, block by block,
+uses localised docs where they exist and are current, and only translates the genuine gaps. It reports that
+split so you know how much native review the deck actually needs, and reuses approved diagrams with translated
+labels rather than redrawing them.
 
 Exam language availability is tracked and verified rather than assumed: the Analytics Engineering exam is
 localised in Japanese, the Architect exam is available in French. Older study guides claiming "English only" are

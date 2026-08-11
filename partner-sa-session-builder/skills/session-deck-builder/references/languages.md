@@ -44,14 +44,23 @@ For the certification slide in a non-English session, state the exam language ex
 English-only for that audience, say so plainly and early; it changes how people prepare, and it's better
 heard in the session than discovered at the exam.
 
-## Source material is mostly English
+## Source material: search the target language first
 
+**Follow the target-language sourcing procedure in `research-protocol.md` before writing anything.** Existing
+approved material in the language beats anything you translate, so look for it first, per block, and only
+translate the genuine gaps. Report the split in the handover: reused, localised, translated.
+
+- **Don't assume internal content is English-only.** EMEA SAs have built French, German, and Spanish
+  enablement material. Search the internal connector, Drive, and Slides using the language's own vocabulary,
+  not English keywords, then run the English query as well and compare.
 - **dbt docs are English.** Cite the English URLs; that's the canonical source and what the audience will use
   day to day. Worth saying out loud in the session so nobody expects localised docs.
 - **Fivetran has localised pricing pages** for German, French, and Spanish (`fivetran.com/de|fr|es/pricing`).
   Prefer the local version when it exists, and verify the figures match the English page.
-- Internal enablement content is English. Translate the *substance*; never translate a customer quote or a case
-  study without flagging that it's a translation.
+- Where only English internal content exists, translate the *substance*; never translate a customer quote or a
+  case study without flagging that it's a translation.
+- **Reuse diagrams across languages.** An approved architecture diagram in an English deck needs its labels
+  translated, not the diagram redrawn.
 
 ## Layout and typography per language
 

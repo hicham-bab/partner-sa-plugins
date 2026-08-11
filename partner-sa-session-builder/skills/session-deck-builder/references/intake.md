@@ -1,8 +1,9 @@
 # Intake: discovery questions
 
-Run this at Stage 1. Use the AskUserQuestion tool, grouped by tier.
+Run this at Stage 1. Use the AskUserQuestion tool, grouped into the three calls below.
 
-**Design target: two rounds of clicking, under 60 seconds, then straight to the outline.** Every question
+**Design target: two rounds of clicking, under 60 seconds, then straight to the outline.** A third short
+round is fine when follow-ups genuinely apply. Every question
 has to earn its place by changing the output. If an answer wouldn't change a slide, it isn't a question,
 it's a default.
 
@@ -14,17 +15,39 @@ it's a default.
    and ask only the gaps. Never re-ask what was already stated.
 2. **Multiple choice, not free text.** Clicking beats typing and produces cleaner routing. Free text only
    where the answer is genuinely open (platform "Other", specific connector, final catch-all).
-3. **Three tiers, two visible rounds.** Tier A always asked, Tier B asked unless parsed, Tier C inferred
-   and merely confirmed in the closing echo.
-4. **Confirm platforms, never infer them.** The only field exempt from rule 1. Platform is multi-select; if
+3. **Respect the tool's shape: 4 questions per call, 4 options per question.** AskUserQuestion accepts a
+   maximum of four questions in one call and four options per question, and it appends its own "Other"
+   option. Send five questions and one is lost. Send six options and the tail is lost. This is not a style
+   preference, it is the reason an earlier version silently never asked about language. Never pad a call to
+   four for symmetry either, ask what applies.
+4. **Three calls, fixed membership.** Call 1 always asked, call 2 asked unless already parsed, call 3 only
+   the follow-ups that apply. Tier C is inferred and merely confirmed in the closing echo.
+5. **Confirm platforms, never infer them.** The only field exempt from rule 1. Platform is multi-select; if
    more than one is chosen, always establish which is primary.
-5. **Every question leads with a recommended option**, so the fast path is click-accept-accept.
-6. **Stop when you have enough.** If Tier A settles Tier B, skip it. Asking questions you can already
+6. **Every question leads with a recommended option**, so the fast path is click-accept-accept.
+7. **Stop when you have enough.** If call 1 settles call 2, skip it. Asking questions you can already
    answer is the opposite of sharp.
 
 ---
 
-## Tier A: always asked (4 questions, one screen)
+## The three calls
+
+Fixed membership. Follow this table rather than regrouping on the fly, because regrouping is how a question
+gets dropped.
+
+| Call | Questions | Always? |
+|---|---|---|
+| 1 | Q1 session type · Q2 platforms · Q2b **deck language** · Q4 duration | Always, even with a detailed brief, minus anything already stated |
+| 2 | Q3 audience · Q5 dbt/Fivetran fluency · Q6 Fivetran source · Q7 vertical | Unless the brief already settles them |
+| 3 | Primary platform · Fabric adapter · speaker-notes language · Q8 outcome | Only the ones that apply, batched into a single call |
+
+**Q2b is never dropped, never merged, never inferred from the partner's country.** A French partner may well
+want an English deck for reuse, and a deck in the wrong language is a total loss rather than a rough edge. If
+you can only ask one question, ask that one.
+
+---
+
+## Call 1: always asked (Q1, Q2, Q2b, Q4, one screen)
 
 **Q1. What kind of session is this?**
 - Partner enablement session *(recommended)*: technical training for partner staff
@@ -36,7 +59,9 @@ it's a default.
 - Databricks
 - BigQuery
 - Microsoft Fabric
-- **Other** → free text (Redshift, Synapse, Postgres, Athena, Teradata, ClickHouse, MotherDuck…)
+
+Four options, and the automatic "Other" takes free text for Redshift, Synapse, Postgres, Athena, Teradata,
+ClickHouse, MotherDuck, and the rest. Do not add a fifth option of your own; see governing rule 3.
 
 Many partners run practices across several platforms. Let them pick all that apply.
 
@@ -59,30 +84,39 @@ both. See the sandbox notes in `multi-platform.md`.
 **Q2b. What language should the deck be in?**
 - English *(recommended default)*
 - French
-- Spanish
-- Italian
 - German
-- Japanese
+- Spanish
 
-→ *If not English:* read `languages.md` before building. Ask whether **speaker notes** should match the slides
-or stay in English; both are common, depending on who presents. Write in the target language from the start
-rather than translating a finished English deck.
+Four options plus the automatic "Other", which is where **Italian** and **Japanese** arrive. All six are fully
+supported in `languages.md`; the four listed are the ones EMEA partner sessions actually ask for. Do not
+expand this list to six, the tool would silently drop the tail and Japanese would vanish.
+
+→ *If not English:* read `languages.md` before building. Ask in call 3 whether **speaker notes** should match
+the slides or stay in English; both are common, depending on who presents. Write in the target language from
+the start rather than translating a finished English deck.
+
+→ *If not English:* the research step changes too, not just the writing. Follow the target-language sourcing
+procedure in `research-protocol.md`: find the best existing internal material in that language first, and only
+translate where it genuinely doesn't exist.
 
 → *Always:* verify certification language availability for that audience before the certification slide claims
 anything. Availability differs by exam and language and has changed recently.
+
+**Q4. How long is the session?**
+- 60–90 minutes
+- Half day (3–4 h)
+- Full day
+- Multi-day
+
+---
+
+## Call 2: asked unless already known (Q3, Q5, Q6, Q7)
 
 **Q3. Who's actually in the room?**
 - Data / analytics engineers: hands-on builders
 - Architects and tech leads: design and standards decisions
 - Mixed technical audience
 - Pre-sales / consultants: need to position and demo, not build
-
-**Q4. How long is the session?**
-- 60–90 minutes · Half day (3–4 h) · Full day · Multi-day
-
----
-
-## Tier B: asked unless already known (4 questions)
 
 **Q5. Which are they stronger on today, dbt or Fivetran?**
 This sets the story's entry point, so it matters more than any other single answer.
@@ -100,11 +134,13 @@ This sets the story's entry point, so it matters more than any other single answ
 
 **Q6. Which Fivetran source should the story use?**
 Uses Fivetran's own connector categories, verbatim from their docs.
-- **Applications**: Salesforce, HubSpot, NetSuite SuiteAnalytics, Workday HCM, Shopify, Zendesk Support, Stripe…
+- **Applications** *(recommended)*: Salesforce, HubSpot, NetSuite SuiteAnalytics, Workday HCM, Shopify, Stripe…
 - **Databases**: PostgreSQL, MySQL, Oracle, SQL Server, MongoDB (incl. High-Volume Agent variants)
 - **Events**: Apache Kafka, Confluent Cloud, Azure Event Hubs, Amazon Kinesis Firehose
 - **Files**: Amazon S3, Azure Blob Storage, Google Cloud Storage, SFTP, SharePoint
-- Not sure: pick the most credible source for their vertical
+
+Exactly four categories, so the automatic "Other" carries "not sure". On "not sure" or no answer, pick the
+most credible source for their vertical and state the choice in the closing echo rather than asking again.
 
 → Optional follow-up: name the specific connector, so the demo and screenshots are exact.
 
@@ -117,18 +153,39 @@ Fivetran-strong partner are an instant credibility loss.
 
 **Q7. Should this be verticalized?**
 - Not vertical-specific *(recommended)*: use a generally credible example
-- Retail / e-commerce · Financial services · Healthcare / life sciences · Manufacturing / supply chain ·
-  Public sector · Media · Other → free text
+- Retail / e-commerce
+- Financial services
+- Manufacturing / supply chain
+
+Healthcare and life sciences, public sector, media, and anything else arrive through the automatic "Other" as
+free text, and are equally well supported. Four listed, not seven, for the reason in governing rule 3.
 
 Vertical changes the running example (the metrics, the source systems, and the pain narrative), not the
 product content. Customer names, logos, and case studies must come from internal sources only; the skill
 never invents a reference.
+
+---
+
+## Call 3: conditional follow-ups (only what applies)
+
+Batch these into one call. Skip any that don't apply, and skip the call entirely if none do. Never exceed four;
+if five would apply, drop Q8 and infer the outcome from the session type instead.
+
+| Ask | Only when | Options |
+|---|---|---|
+| Which platform is primary? | Q2 returned more than one | The selected platforms, up to four |
+| Fabric adapter? | Fabric is in Q2 | Warehouse (T-SQL, `dbt-fabric`) · Lakehouse (Spark, `dbt-fabricspark`) |
+| Speaker notes language? | Q2b is not English | Match the slides · Keep notes in English |
+| Q8, see below | Not inferable from the session type | The four below |
 
 **Q8. What should they be able to do afterward?**
 - Position dbt + Fivetran to their own clients
 - Build and deploy independently
 - Pass certification: adds a certification-path close
 - Ship a working prototype: hackathon default
+
+Hackathons default to shipping a prototype and enablement sessions to positioning, so this is usually
+inferable. Say the inference in the closing echo instead of spending a question on it.
 
 ---
 

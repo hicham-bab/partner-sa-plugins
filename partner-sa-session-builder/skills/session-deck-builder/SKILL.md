@@ -31,6 +31,14 @@ content and official docs, telling one continuous story adapted to the partner i
    generation, both bypass the brand template.
 6. **Always start from the basics.** Every deck opens at first principles regardless of audience
    seniority. Pace changes; the arc does not.
+7. **Always ask the deck language, in the first round of questions.** AskUserQuestion takes at most four
+   questions per call and four options per question, so a five-question round silently loses one. Follow the
+   call membership in `references/intake.md` exactly; never regroup it on the fly.
+8. **Reuse diagrams before drawing them, and never let an architecture slide degrade into bullets.** Search
+   internal decks first, per `references/slide-library.md`. If a diagram can't be embedded, reserve the slide
+   and tell the user what to paste.
+9. **Text must fit the placeholder.** Per-placeholder character budgets and the Stage 4.5 fit check live in
+   `references/layout-and-fit.md`. Never shrink a font, never set a font family, never truncate to fit.
 
 ## Workflow
 
@@ -41,8 +49,13 @@ Run these five stages in order. Announce nothing; just do the work and surface t
 Read `references/intake.md` and run it. Parse any brief the user already gave, ask only the gaps, and
 close with the one-paragraph session profile echo for confirmation.
 
-Use the AskUserQuestion tool for the discovery questions, grouped, multiple choice, recommended option
-first. Target under 60 seconds of clicking.
+Use the AskUserQuestion tool, in the three calls `intake.md` defines: call 1 is session type, platforms,
+**deck language**, and duration; call 2 is audience, dbt/Fivetran fluency, Fivetran source, and vertical;
+call 3 is only the follow-ups that apply. Four questions per call, four options per question, recommended
+option first. Target under 60 seconds of clicking.
+
+The deck language is asked in call 1, always, and it changes Stage 2 as well as Stage 4: research the target
+language first rather than translating at the end.
 
 ### Stage 2: Research, internal-first
 
@@ -56,6 +69,15 @@ one of the five profiles, use `references/platforms/_other-platform.md` to build
 platform carries the running example (the primary), and the others appear only as contrast. Research the
 primary fully; for secondary platforms, research only the points that actually diverge (incremental
 strategies, constraint enforcement, catalog/Iceberg support). Do not concatenate full profiles.
+
+**If the deck language isn't English**, follow the target-language sourcing procedure in
+`references/research-protocol.md`: find approved material already in that language, per block, before
+translating anything. Track which blocks were reused, which came from localised docs, and which you
+translated.
+
+**Find the diagrams now, not at build time.** For the architecture anchor and any conceptual diagram, search
+existing internal decks per the diagram procedure in `references/slide-library.md`. Knowing whether a diagram
+exists changes the outline, because a reserved diagram slide is not a bullet slide.
 
 Produce a research brief: key points, each with a resolved source link. Do not proceed with unresolved
 platform-specific claims.
@@ -77,14 +99,18 @@ Present it and wait. Accept redlines and revise the outline; never skip ahead to
 
 ### Stage 4: Build the deck
 
-Read `references/slide-library.md` for the layout mapping, then:
+Read `references/slide-library.md` for the layout mapping and the diagram procedure, and
+`references/layout-and-fit.md` for the placeholder budgets and visual rhythm rules. Then:
 
 1. Duplicate the template (ID in `references/slide-library.md`) into a new file named
    `<Partner>: <Session type>, <YYYY-MM-DD>`.
 2. Call `list_layouts` on the new copy and match layouts **by name**, not by hardcoded ID.
 3. Delete the template's example slides.
-4. Add slides against the matched layout IDs, filling placeholders.
-5. Write speaker notes for every slide, each opening with its bridge line.
+4. Add slides against the matched layout IDs, filling placeholders within the character budgets in
+   `references/layout-and-fit.md`. Delete placeholders you don't need rather than filling them.
+5. Reuse or reserve the diagrams, per `references/slide-library.md`. Never substitute bullets for a diagram.
+6. Write speaker notes for every slide, each opening with its bridge line. Notes carry the prose that
+   doesn't fit on the slide; that is what they are for.
 
 Apply `references/brand-voice.md` to all slide text and speaker notes.
 
@@ -95,6 +121,14 @@ native-speaker review is worth it before a high-stakes session.
 
 For hackathons and workshops, also produce a facilitator run-of-show as a separate markdown file with
 wall-clock timings, checkpoint gates, and fallbacks for a broken environment.
+
+### Stage 4.5: Fit check
+
+Run the fit check in `references/layout-and-fit.md` before Stage 5. `list_slides`, then `get_slide` on every
+slide, and compare the text that is actually in each element against its budget. Rewrite every overflow.
+
+This is the step whose absence produces text running over the layout, so it is not skippable and its result
+is reported as a number, not as an adjective.
 
 ### Stage 5: Self-check
 
@@ -107,7 +141,13 @@ Verify before handing over, and report the result honestly rather than claiming 
 - The running example appears in every act from 2 onward
 - Acts 3 and 4 within ~20% of each other in slide count, unless intake said otherwise
 - Slide count matches the duration budget; timings sum to the stated length
-- Brand rules applied; no placeholder text left behind
+- Brand rules applied; no placeholder text left behind, and unused placeholders deleted rather than filled
+- **Fit check run on every slide**, with the count of slides checked and slides rewritten stated in the handover
+- **No two Text heavy slides adjacent**, no more than two consecutive slides on one layout, and a visual or
+  section break at least every fourth slide
+- **The architecture anchor is a diagram**, either reused, embedded, or explicitly reserved for pasting, and
+  never silently converted to bullets
+- **The deck is in the language that was asked for**, with the target-language sourcing split reported
 
 If a check fails, fix it or state plainly what's unresolved. Do not report a deck as ready when it isn't.
 
@@ -122,6 +162,8 @@ Finish by sharing the deck link, plus the run-of-show file for hackathons.
 | Fivetran docs | web fetch on `fivetran.com/docs` |
 | Partner context | Notion, Google Drive, Salesforce, Slack connectors |
 | Deck build | Google Slides connector: `duplicate`, `list_layouts`, `list_slides`, `add_slide`, `add_text`, `update_text`, `add_image`, `add_table`, `set_speaker_notes`, `delete_slide` |
+| Diagram reuse | Google Slides `search`, `list_slides`, `get_slide` for existing internal diagrams; Drive `search_files` for exported images |
+| Fit check | Google Slides `list_slides`, `get_slide` to read back what actually landed in each placeholder |
 
 If the Google Slides connector isn't available, say so and stop; do not silently fall back to producing
 a `.pptx`, since that loses the brand template. Offer the outline as a markdown file instead.
@@ -130,7 +172,8 @@ a `.pptx`, since that loses the brand template. Offer the outline as a markdown 
 
 - `references/intake.md`: discovery questions, skip logic, running-example assembly
 - `references/storytelling.md`: five-act arc, bridge lines, continuity gates
-- `references/slide-library.md`: slide blocks mapped to template layouts, template ID
+- `references/slide-library.md`: slide blocks mapped to template layouts, template ID, diagram reuse procedure
+- `references/layout-and-fit.md`: per-placeholder character budgets, the fit check, visual rhythm, prohibitions
 - `references/session-recipes.md`: enablement and hackathon slide sequences
 - `references/research-protocol.md`: source hierarchy, citation and verification rules
 - `references/brand-voice.md`: naming and style rules, product naming currency, out-of-scope features

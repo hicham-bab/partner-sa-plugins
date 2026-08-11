@@ -30,10 +30,13 @@ template doesn't have, don't improvise a layout: either compose it on `Blank` / 
 placeholders for text, or tell the user the template lacks it. Silently reaching for a generic Google layout is
 how a deck stops being on-brand.
 
-**Word budgets below are calibrated for English.** For other languages scale them per `languages.md`,
-roughly ×0.85 for French, Spanish, and Italian, **×0.7 for German**, and count characters rather than words
-for Japanese. Then check a rendered slide visually before building the rest of the deck; German headings and
-Japanese fonts are where layouts break.
+**The word budgets below are a planning aid for the outline. `layout-and-fit.md` holds the budgets that
+actually govern the build**, per placeholder and in characters, plus the Stage 4.5 fit check. Read it before
+writing any slide text. Where the two disagree, `layout-and-fit.md` wins.
+
+Both scale by language: roughly ×0.85 for French, Spanish, and Italian, **×0.7 for German**, ×0.5 for
+Japanese. German headings and Japanese fonts are where layouts break, so check a rendered slide before
+building the rest of the deck.
 
 ## Layouts available
 
@@ -108,8 +111,9 @@ There is **no table layout in this template.** See below.
 | Next steps | 5 | Content slide | ≤ 45 |
 | Q&A / close | 5 | Simple branded | ≤ 6 |
 
-Word budgets are tuned to the template's placeholder sizes. **If content exceeds the budget, split the
-slide, never shrink text and never truncate mid-thought.** Flag overflow rather than silently cutting.
+These per-slide totals are tuned to the template's placeholder sizes. **If content exceeds the budget, split
+the slide, never shrink text and never truncate mid-thought.** For which placeholder gets how much, the
+overflow remedies in order, and the fit-check arithmetic, see `layout-and-fit.md`.
 
 ## The anchor slide
 
@@ -137,17 +141,72 @@ Several blocks above are tables. The template has **no table layout**, so build 
 
 Because the table itself isn't template-derived, it won't inherit brand styling automatically. Match it to the
 deck manually: pull the accent colour and font from the master rather than accepting Google's defaults, keep the
-header row visually distinct, and keep tables to **4 columns and 6 rows maximum**; anything larger stops being
-readable at the back of a room and should be split or reduced to the two or three rows that carry the argument.
+header row visually distinct, and keep tables to **4 columns and 6 rows maximum** with **≤ 40 characters per
+cell**; anything larger stops being readable at the back of a room and should be split or reduced to the two or
+three rows that carry the argument.
 
 If a table would need more than that, prefer **Text heavy slide reversed** with the comparison written as prose
 pairs. A dense grid nobody can read is worse than three sentences that land.
 
-## Diagram construction
+## Diagrams and images: reuse before you draw
 
-Build architecture diagrams with `add_shape` and `add_line` on a Blank layout, or `add_image` if an
-approved diagram exists internally. Prefer an existing internal diagram when one is found; it's already
-on-brand and already familiar to the team.
+**Hand-drawing an architecture diagram out of shapes is the last resort, not the first move.** An existing
+internal diagram is already on-brand, already reviewed, and already familiar to the team who will present it.
+A grid of `add_shape` rectangles is none of those things, and it is the single clearest tell that a deck was
+generated rather than built.
+
+Work down this list and stop at the first step that succeeds.
+
+### 1. Find an existing internal diagram
+
+Search before drawing, every time, for the architecture block and any conceptual diagram:
+
+| Source | How |
+|---|---|
+| Existing decks | Google Slides `search` with the topic plus a platform name, for example "architecture Fivetran dbt Databricks". Full-text, AND logic, so keep it to three or four keywords. |
+| Recent decks first | Add `modifiedAfter` for the last 12 months, then widen if nothing lands. Stale architecture diagrams show retired product names. |
+| Internal content | The internal search connector, for enablement decks and one-pagers on the same subject. |
+| Drive | Google Drive `search_files` for exported diagram images. |
+
+When a candidate turns up, `list_slides` on it, `get_slide` on the likely slide, and check the diagram is
+current: no retired product names, no "dbt Cloud" in a Fusion-era diagram, and the platform vocabulary
+matches the partner's. A wrong-but-pretty diagram is worse than none.
+
+### 2. Embed it, if the image is reachable
+
+`add_image` needs a **publicly accessible URL**, and an internal Drive file is not one. So:
+
+- If `get_slide` returns the image element's `contentUrl`, pass that straight to `add_image`. These URLs are
+  short-lived, so embed within the same build rather than saving one for later.
+- dbt docs images are genuinely public, so a product screenshot from `docs.getdbt.com` embeds cleanly. Confirm
+  the URL resolves before relying on it, and keep screenshots to the ones that carry an argument.
+- Never make an internal file public to get a URL. That is not yours to decide.
+
+### 3. If it can't be embedded, reserve the slide
+
+Do **not** silently substitute bullets for the diagram, and do not improvise shapes to fill the gap. Instead:
+
+1. Create the slide on the intended layout with its title and speaker notes in place.
+2. Leave the image area empty.
+3. Tell the user exactly what to paste and where: the source deck link, the slide number, and the target slide
+   number in the new deck. One line per diagram.
+
+A deck with two reserved slides and a precise paste list is a five-minute job to finish. A deck where the
+architecture moment quietly became a bullet list is a rebuild.
+
+### 4. Only then, draw it
+
+If no internal diagram exists and the slide genuinely needs one, build it on **Blank** with `add_shape` and
+`add_line`, and keep it disciplined:
+
+- Five boxes maximum in the main flow, left to right, on one horizontal axis
+- Uniform box size, uniform gaps, all boxes aligned on the same y position
+- One label per box, 3 words maximum, from the active platform profile's vocabulary
+- Arrows in one direction only; if the flow needs to double back, the diagram is too complex for a slide
+- Master colours only, per `layout-and-fit.md`
 
 Label boxes in the partner's platform vocabulary, from the active platform profile. Never label a box
 with a term the partner's platform doesn't use.
+
+Tell the user in the handover which diagrams were reused, which were reserved for pasting, and which you drew,
+so they know where to look before presenting.

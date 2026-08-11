@@ -18,6 +18,40 @@ reinventing it creates inconsistency across SAs. Docs fill the gaps and verify s
 Where internal messaging and your own framing differ, internal messaging wins. This includes the narrative
 spines in the platform profiles; those are starting drafts, not approved positioning.
 
+## Target-language sourcing, when the deck isn't in English
+
+Run this as part of Stage 2, before writing anything. A deck in French assembled entirely from English
+internal material and then written in French is a translation job wearing a research job's clothes. The
+better material often already exists in the target language, and it is already approved.
+
+**Order of preference for every block:**
+
+1. **Approved internal content already in the target language.** Search the internal connector, Drive, and
+   Slides in that language, not in English. Query with the language's own terms, since a French enablement
+   deck is titled "socle de données", not "data foundation". Run the English query too, then compare.
+2. **Official docs in that language, where they exist.** Check rather than assume; coverage differs by
+   language and by page, and a stale localised page is worse than the current English one. If the localised
+   page lags the English one on a fact, use the English fact and write it in the target language.
+3. **English internal content, translated by you.** Only once 1 and 2 come up empty for that block.
+
+**Record which of the three every block came from**, and report the tally in the handover: how many blocks
+came from existing target-language material, how many from localised docs, how many you translated. That
+number tells the user how much native review the deck actually needs, and it is the difference between
+"reviewed this" and "glanced at it".
+
+**Translating a gap:**
+
+- Write it in the target language from the source facts. Do not draft English prose and convert it.
+- Keep product names, code, config keys, CLI flags, and official exam names in English. See `languages.md`.
+- Flag every translated block explicitly in the handover, since these are the ones a native speaker should
+  read first.
+- Where an internal English deck has an approved diagram, reuse the diagram and translate only its labels.
+  Per `slide-library.md`, reuse still beats redrawing, in any language.
+
+**When good material exists in a third language**, say a strong German deck for a Spanish session, use it as
+a structural model rather than a text source, and note it. Translating German to Spanish through English
+loses more than it gains.
+
 ## What must be resolved, never recalled
 
 Resolve these from docs at run time, every time:
