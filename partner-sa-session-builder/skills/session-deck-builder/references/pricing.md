@@ -1,4 +1,4 @@
-# Pricing — dbt and Fivetran
+# Pricing: dbt and Fivetran
 
 An **optional** block. Include it only when the session genuinely needs it: a partner sizing a client
 proposal, a practice lead building a business case, or a direct question in the room.
@@ -14,7 +14,7 @@ proposal, a practice lead building a business case, or a direct question in the 
    front of a partner is expensive.
 3. **List price only.** Never put a partner's or client's actual/negotiated pricing on a slide. Discounts,
    bundles, and ELAs belong to the account team.
-4. **Add a "list price as of DATE — confirm with your account team" footnote** on every pricing slide.
+4. **Add a "list price as of DATE, confirm with your account team" footnote** on every pricing slide.
 5. **Route deal questions out of the room.** An SA presenting numbers can create an expectation that becomes
    a commitment. Answer with structure, refer specifics to the account team or deal desk.
 
@@ -35,7 +35,7 @@ tighter integration and bundled pricing expected over time.** So:
 
 Verify merger and org facts before stating them; leadership and messaging can move.
 
-## dbt pricing — shape as of 11 August 2026
+## dbt pricing: shape as of 11 August 2026
 
 Four tiers, seat-based with usage limits:
 
@@ -46,26 +46,26 @@ Four tiers, seat-based with usage limits:
 | Enterprise | Custom | Custom | 100,000 | 30 |
 | Enterprise+ | Custom | Custom | 100,000 | Unlimited |
 
-Positioning cues, not a feature dump — pick only what the session needs:
+Positioning cues, not a feature dump; pick only what the session needs:
 
-- **Developer** — free, 14-day Starter trial, browser IDE, MFA, job scheduling, 24x5 support without SLA
-- **Starter** — adds basic dbt Catalog, basic dbt Semantic Layer (5k queried metrics/month), API access
-- **Enterprise** — advanced Catalog and Semantic Layer (20k metrics), **dbt Mesh**, priority support, security
+- **Developer**: free, 14-day Starter trial, browser IDE, MFA, job scheduling, 24x5 support without SLA
+- **Starter**: adds basic dbt Catalog, basic dbt Semantic Layer (5k queried metrics/month), API access
+- **Enterprise**: advanced Catalog and Semantic Layer (20k metrics), **dbt Mesh**, priority support, security
   review option. This is the tier where the governance story becomes real.
-- **Enterprise+** — PrivateLink, IP restrictions, rollback, hybrid projects
+- **Enterprise+**: PrivateLink, IP restrictions, rollback, hybrid projects
 
 **Plan gating worth knowing:** the pricing page lists both *dbt Mesh cross project* and *dbt Mesh cross
 platform* as Enterprise-tier features. If a session includes the cross-platform Mesh story, know that it lands
 at Enterprise. See `data-mesh.md`.
 
 **A tension to handle deliberately:** the public pricing page still lists dbt Copilot, dbt Canvas, and dbt
-Insights as tier features — all three are out of scope for our content (see `brand-voice.md`). Don't screenshot
+Insights as tier features; all three are out of scope for our content (see `brand-voice.md`). Don't screenshot
 or reproduce the full feature comparison table. Build your own simplified tier table with the rows the session
 actually needs, and leave those out rather than showing and then not discussing them.
 
 ### dbt State pricing
 
-Usage-based and separate from seats — you pay for the benefit of reuse:
+Usage-based and separate from seats; you pay for the benefit of reuse:
 
 | Item | Value |
 |---|---|
@@ -82,13 +82,13 @@ for. Pair it with the Cost Insights story if the session has a FinOps angle.
 
 Details: `/docs/platform/billing/dbt-state-usage` and `/docs/deploy/dbt-state-trial`.
 
-## Fivetran pricing — shape as of 11 August 2026
+## Fivetran pricing: shape as of 11 August 2026
 
 A different model: **consumption-based, not seat-based.** Unlimited users on paid plans. This contrast is
-usually the most useful thing on the slide — the two products are priced on different axes, so a client's cost
+usually the most useful thing on the slide; the two products are priced on different axes, so a client's cost
 driver differs between them.
 
-Four plans — Free, Standard, Enterprise, Business Critical — spanning three products under one consolidated
+Four plans (Free, Standard, Enterprise, Business Critical), spanning three products under one consolidated
 usage-based plan: **Connections, Transformations, Activations.**
 
 | Plan | Notable inclusions |
@@ -98,12 +98,12 @@ usage-based plan: **Connections, Transformations, Activations.**
 | Enterprise | 1-minute syncs, enterprise database connectors, custom roles, SCIM, choice of cloud provider, hybrid deployment |
 | Business Critical | Customer-managed encryption keys, PCI DSS Level 1, private networking |
 
-**The billing metric is MAR — monthly active rows.** Counts inserts and updates (including deletes); excludes
+**The billing metric is MAR (monthly active rows).** Counts inserts and updates (including deletes); excludes
 unchanged rows on re-syncs and the initial bulk sync. Per-connection cost curves mean the unit rate falls as
 volume rises. A $5 base charge applies to standard connections with monthly usage between 1 MAR and 1M MAR
 (not on the Free plan).
 
-**Transformations tiering** — useful if a partner is comparing where transformation runs get billed:
+**Transformations tiering**, useful if a partner is comparing where transformation runs get billed:
 
 | Monthly model runs | List rate per run |
 |---|---|
@@ -116,7 +116,7 @@ Other levers a partner will ask about: annual contracts save up to 22% (discount
 list price); ELAs offer a fixed annual price with no consumption limits, for clients who value predictability;
 14-day trials, and every new connection gets 14 days free. Data processing runs in the US, Canada, EU, UK,
 Australia, India, and Singapore, with cloud-provider choice on Enterprise and region choice on Business
-Critical — worth having ready for EMEA data-residency questions. There's a startup programme for Y Combinator
+Critical; worth having ready for EMEA data-residency questions. There's a startup programme for Y Combinator
 companies. Use the pricing estimator at `https://fivetran.com/pricing-estimator` rather than doing arithmetic
 on a slide.
 
@@ -128,7 +128,7 @@ raises it, note it's legacy and move on.
 
 | Need | Shape |
 |---|---|
-| Partner sizing a client proposal | One slide per product: dbt tiers, Fivetran plans. Then a "different cost drivers" slide — seats and model builds vs MAR. |
+| Partner sizing a client proposal | One slide per product: dbt tiers, Fivetran plans. Then a "different cost drivers" slide, seats and model builds vs MAR. |
 | Business case for a practice | Skip tier tables. One slide on cost drivers plus the dbt State reuse-saves-compute angle. |
 | Someone asks in the room | Don't improvise numbers. Show the two pricing URLs, name the two models, refer specifics to the account team. |
 
@@ -136,5 +136,6 @@ Where possible prefer **linking to the pricing pages over reproducing them.** A 
 the shape of each model ages well; a slide full of figures is wrong within a quarter and someone will quote it
 back to you.
 
-Recommended layouts: Table slide for tiers, Content slide for cost drivers, and put the "confirm with your
+Recommended layouts: `Simple` + `add_table` for tiers (the template has no table layout, see
+`slide-library.md`), Content slide for cost drivers, and put the "confirm with your
 account team" line in the speaker notes as well as on the slide.

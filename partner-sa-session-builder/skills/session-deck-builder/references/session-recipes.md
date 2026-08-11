@@ -9,7 +9,7 @@ Default shape, 60–90 minutes, ~22 slides, 1 lab.
 
 | Act | Blocks |
 |---|---|
-| — | Title · Agenda with timings |
+| 0 | Title · Agenda with timings |
 | 1 | The world / what hurts today · Audience context |
 | 2 | The data journey (introduces running example) · Whole-picture architecture |
 | 3 | Section break · Concept explainer ×1–2 · Live-demo cue · Deep technical explanation |
@@ -26,23 +26,23 @@ full pathway with an exam-by commitment.
 ## Multi-platform sessions
 
 Pick a primary platform to carry the running example, then insert contrast only where behaviour genuinely
-differs — in practice that's incremental strategies, constraint enforcement, and the catalog/Iceberg story.
+differs; in practice that's incremental strategies, constraint enforcement, and the catalog/Iceberg story.
 Full shapes and the verified divergence tables are in `multi-platform.md`.
 
 | Situation | Adjustment to the recipe above |
 |---|---|
 | One dominant platform, one or two secondary | Add one contrast slide per real divergence, in act 3 or 4. Labs on the primary only. |
 | Even split, facilitators per track available | Teach acts 1–3 platform-neutrally; split act 4 labs into per-platform breakouts; reconverge for act 5. |
-| Cross-platform client workloads | Lead act 5 with cross-platform Mesh — the multi-platform reality is the story, not a caveat. |
+| Cross-platform client workloads | Lead act 5 with cross-platform Mesh, the multi-platform reality is the story, not a caveat. |
 | Partner migrates clients between platforms | Comparison content becomes the core; frame as a migration practice. |
 
-For a mixed-platform room, prefer teaching **`microbatch`** for incremental models — it's the one strategy
+For a mixed-platform room, prefer teaching **`microbatch`** for incremental models; it's the one strategy
 supported across every adapter in the table, so the lab works on every track.
 
 ## Standalone subject sessions
 
 Two subjects are deep enough to carry a session on their own rather than appearing as a feature slide inside a
-broader story — see `wizard-and-state.md` for the full shapes:
+broader story; see `wizard-and-state.md` for the full shapes:
 
 | Session | Half-day shape |
 |---|---|
@@ -51,11 +51,11 @@ broader story — see `wizard-and-state.md` for the full shapes:
 | **Combined, full day** | Wizard CLI in the morning (authoring), dbt State after lunch (execution). Through-line: less time writing, less compute rebuilding. |
 
 Both work without a dbt platform account. Lead with that framing when the partner's clients aren't all on the
-platform — it turns "another thing to sell" into "something you can use on Monday, on the engagement you
+platform; it turns "another thing to sell" into "something you can use on Monday, on the engagement you
 already have."
 
 **Include the dbt Mesh block** for architect and tech-lead audiences, and for partners working across more
-than one data platform — in which case lead act 5 with cross-platform Mesh. See `data-mesh.md`, and respect
+than one data platform, in which case lead act 5 with cross-platform Mesh. See `data-mesh.md`, and respect
 the readiness caveats there rather than selling mesh to everyone.
 
 ## Hackathon / workshop
@@ -64,14 +64,14 @@ Half day or full day. Needs the facilitator run-of-show as a second deliverable.
 
 | Act | Blocks |
 |---|---|
-| — | Title · Agenda with timings and checkpoint clock |
+| 0 | Title · Agenda with timings and checkpoint clock |
 | 1 | The world / the challenge framing |
 | 2 | The data journey · Whole-picture architecture (**keep visible all day**) |
 | 3–4 | Environment setup · Architecture of the provided starter · Rules and judging criteria · Exercise tracks by skill level · Checkpoint slides at each time gate |
 | 5 | Demo / judging · Recap · Certification ladder · Partner portal · Next steps · Q&A |
 
 Hackathons still open at the basics. Participants arrive at mixed levels and the shared foundation is what
-keeps the room together — skipping it strands the least experienced third within the first hour.
+keeps the room together; skipping it strands the least experienced third within the first hour.
 
 ### Facilitator run-of-show (separate markdown file)
 
@@ -79,7 +79,7 @@ Required for every hackathon and workshop:
 
 - Wall-clock timings for each segment, not just durations
 - Checkpoint gates: what every participant must have working before the room moves on
-- **Fallbacks for a broken environment** — the single most likely failure, and the thing that separates a
+- **Fallbacks for a broken environment**: the single most likely failure, and the thing that separates a
   recovered session from a lost one
 - Support channel and escalation path
 - Per-track difficulty notes so facilitators can redirect people mid-session
@@ -87,7 +87,7 @@ Required for every hackathon and workshop:
 ## Mixed session
 
 Enablement in the morning, build in the afternoon. Run the enablement recipe through act 4, then switch to
-the hackathon act 3–4 blocks for the build portion, and close with a single act 5. One deck, one arc — do
+the hackathon act 3–4 blocks for the build portion, and close with a single act 5. One deck, one arc, do
 not produce two decks stitched together, and do not restate the foundation after lunch.
 
 ## Audience calibration
@@ -110,5 +110,5 @@ From intake Q3.
 | Full day | 50–60 | 4–5 |
 | Multi-day | One deck per day | 4–5 per day |
 
-Multi-day sessions generate one deck per day, built one at a time — easier to deliver and easier to hand to
+Multi-day sessions generate one deck per day, built one at a time; easier to deliver and easier to hand to
 a co-presenter.

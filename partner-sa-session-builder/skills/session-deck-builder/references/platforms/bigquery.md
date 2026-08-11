@@ -1,4 +1,4 @@
-# Platform profile — BigQuery
+# Platform profile: BigQuery
 
 ## Vocabulary
 
@@ -8,7 +8,7 @@ Avoid: warehouse, catalog-as-namespace, credits, capacity units.
 
 ## Narrative spine
 
-**Where they already are:** serverless scale, trivial to start, no infrastructure to manage — and sprawl
+**Where they already are:** serverless scale, trivial to start, no infrastructure to manage, and sprawl
 that arrived quietly.
 
 **The argument:** scale was never your problem. Trust, lineage, and query-cost discipline are. dbt adds
@@ -51,4 +51,4 @@ metadata-sync mechanism. See `../data-mesh.md`.
 ## Demo notes (phase 2)
 
 Dedicated project or dataset, service-account auth. Show a query-cost figure before and after a
-partitioning change — the cheapest way to make the trust-and-cost argument concrete.
+partitioning change, the cheapest way to make the trust-and-cost argument concrete.

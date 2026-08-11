@@ -1,4 +1,4 @@
-# Platform profile — Snowflake
+# Platform profile: Snowflake
 
 ## Vocabulary
 
@@ -12,7 +12,7 @@ Avoid: catalog-as-namespace, dataset, slots, capacity units.
 question is considered settled.
 
 **The argument:** you solved consolidation. The open problem is whether the transformation layer on top is
-trustworthy, tested, and cost-controlled — that's where dbt lives.
+trustworthy, tested, and cost-controlled, that's where dbt lives.
 
 Snowflake audiences respond to reliability and credit discipline. Lead there, not with governance.
 
@@ -46,11 +46,11 @@ without fetching the configs page first.
 
 ## Cross-platform Mesh
 
-Snowflake is the best-covered platform for cross-platform Mesh — documented combinations with Databricks
+Snowflake is the best-covered platform for cross-platform Mesh, documented combinations with Databricks
 (Unity), Athena (Glue), BigQuery (BigLake), and DuckDB (Horizon). Requires catalog-linked databases. See
 `../data-mesh.md`, including the write-performance caveat and the multi-catalog alternative.
 
 ## Demo notes (phase 2)
 
-Profile targets a dedicated warehouse and role. Keep credit consumption visible during the session — cost
+Profile targets a dedicated warehouse and role. Keep credit consumption visible during the session, cost
 transparency is itself a selling point for this audience.

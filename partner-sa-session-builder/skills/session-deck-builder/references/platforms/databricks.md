@@ -1,9 +1,9 @@
-# Platform profile — Databricks
+# Platform profile: Databricks
 
 ## Vocabulary
 
 Use: catalog, schema, table, Unity Catalog, Delta Lake, SQL warehouse, cluster, notebook, volume, Photon.
-Namespace: `catalog.schema.table` — three levels.
+Namespace: `catalog.schema.table`, three levels.
 Avoid: database-as-namespace, dataset, slots, credits.
 
 ## Narrative spine
@@ -11,7 +11,7 @@ Avoid: database-as-namespace, dataset, slots, credits.
 **Where they already are:** the lakehouse is in place, Unity Catalog governs, notebooks do the work.
 
 **The argument:** notebooks got you the platform. dbt turns transformation into a reviewable, tested,
-version-controlled product — so analysts aren't queued behind engineers.
+version-controlled product, so analysts aren't queued behind engineers.
 
 Lead with the notebook-to-production gap. It's the pain this audience feels weekly and rarely names.
 
@@ -33,7 +33,7 @@ BI / AI` with Unity Catalog governance and lineage spanning the middle.
 | Fivetran destination | `fivetran.com/docs/destinations/databricks` |
 | Fivetran Databricks setup guide | `fivetran.com/docs/destinations/databricks/databricks-setup-guide` |
 
-## Known constraint — verify currency, but check this one
+## Known constraint: verify currency, but check this one
 
 Per Fivetran's Databricks destination docs: **Azure Databricks destinations using OAuth authentication do
 not support Transformations for dbt Core or Quickstart data models.** Confirm this still holds before the
@@ -51,10 +51,10 @@ discovering it live.
 ## Cross-platform Mesh
 
 Documented combinations: Databricks ↔ Snowflake (Unity) and Databricks ↔ DuckDB (Unity). Requires
-Databricks catalog federation or Snowflake catalog-linked databases. Working example projects exist —
+Databricks catalog federation or Snowflake catalog-linked databases. Working example projects exist,
 see `../data-mesh.md`.
 
 ## Demo notes (phase 2)
 
 Unity Catalog enabled, dedicated catalog for the demo, SQL warehouse sized small. Show lineage in Unity
-Catalog alongside dbt lineage — the pairing is the point.
+Catalog alongside dbt lineage, the pairing is the point.

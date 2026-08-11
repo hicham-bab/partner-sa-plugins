@@ -1,4 +1,4 @@
-# Storytelling — the narrative contract
+# Storytelling: the narrative contract
 
 The deck must read as one continuous argument, built from the ground up. Accuracy and branding are
 necessary but not sufficient; a deck that is correct and still feels like a list of topics has failed.
@@ -9,7 +9,7 @@ Open at first principles for every audience, regardless of seniority.
 
 **Basics is not beginner content.** It means establishing the shared foundation before layering anything
 on top. For an advanced room those opening slides move fast and act as framing. For a new room they are
-taught. The arc never changes — only the pace and the depth.
+taught. The arc never changes, only the pace and the depth.
 
 Hold this rule even for expert audiences: people who know dbt deeply often can't say where ingestion ends,
 and Fivetran experts often can't place the semantic layer. Skipping the foundation produces an audience
@@ -27,7 +27,7 @@ Fixed. Recipes vary the contents of each act, never the order.
 | 4. Where dbt fits | Transformation as the trust, logic, and governance layer | Balanced with act 3 |
 | 5. The whole picture | Integrated view, then Fusion / dbt Mesh / dbt Catalog where relevant, then next steps | Answers "so what?" |
 
-**Swap acts 3 and 4 when the audience is stronger on Fivetran** — start where they already stand, then move
+**Swap acts 3 and 4 when the audience is stronger on Fivetran**: start where they already stand, then move
 into the gap. The dbt/Fivetran balance is even by default; neither product is a bolt-on to the other's
 story.
 
@@ -60,7 +60,7 @@ Every slide's speaker notes open with one sentence connecting it to the slide be
 optional.
 
 **The check that makes this real: read only the bridge lines, in order. They must form a coherent
-paragraph.** If they don't, the deck has a structural gap — fix the outline rather than polishing the
+paragraph.** If they don't, the deck has a structural gap; fix the outline rather than polishing the
 prose.
 
 Bridge lines carry the argument forward; they don't recap. "Now that the orders are landed and typed, the
@@ -71,9 +71,9 @@ not.
 
 For each slide:
 
-1. **Bridge line** — one sentence connecting from the previous slide
-2. **Talk track** — 3–6 sentences of what to actually say
-3. **Source** — the resolved link backing any claim on the slide
+1. **Bridge line**: one sentence connecting from the previous slide
+2. **Talk track**: 3–6 sentences of what to actually say
+3. **Source**: the resolved link backing any claim on the slide
 
 The source line exists so a colleague can deliver a deck they didn't build.
 
@@ -81,7 +81,7 @@ The source line exists so a colleague can deliver a deck they didn't build.
 
 Enforced at Stage 5:
 
-- No orphan slides — every slide traces to an act and has a bridge line
+- No orphan slides; every slide traces to an act and has a bridge line
 - No product name before act 3
 - The running example appears in every act from 2 onward
 - Acts 3 and 4 within ~20% of each other in slide count, unless intake said otherwise

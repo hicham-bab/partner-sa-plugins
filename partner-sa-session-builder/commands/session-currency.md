@@ -4,7 +4,7 @@ description: Re-verify the plugin's facts against live sources, update the refer
 
 Run the `currency-check` skill.
 
-Audit every time-sensitive claim in this plugin against its live source — product naming and release phases,
+Audit every time-sensitive claim in this plugin against its live source, product naming and release phases,
 out-of-scope features, cross-platform Mesh support, dbt Wizard CLI and dbt State, certifications, pricing,
 end-of-life dates, the deck template, and merger facts.
 

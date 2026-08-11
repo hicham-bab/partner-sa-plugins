@@ -2,7 +2,7 @@
 
 Supported output languages: **English (default), French, Spanish, Italian, German, Japanese.**
 
-Ask early — language affects word budgets, layout, and which certification claims are true. It is not a
+Ask early; language affects word budgets, layout, and which certification claims are true. It is not a
 post-processing step, and translating a finished English deck produces worse results than writing it in the
 target language from the start.
 
@@ -20,28 +20,28 @@ target language from the start.
 of a sentence, and including in German where nouns are otherwise capitalised. Never *DBT*, never *Dbt*.
 
 Job titles and team names stay lowercase in English; in other languages follow that language's normal
-conventions for common nouns — *analytics engineer*, *ingénieur analytics*, *Data Engineer* in German follows
+conventions for common nouns, *analytics engineer*, *ingénieur analytics*, *Data Engineer* in German follows
 German noun capitalisation because it's a German noun, not a brand.
 
-## Certification language availability — verify, don't assume
+## Certification language availability: verify, don't assume
 
-This has changed and is genuinely nuanced. Older study guides still say "Only English at this time" — that is
+This has changed and is genuinely nuanced. Older study guides still say "Only English at this time"; that is
 **out of date**. What internal sources showed as of early 2026:
 
 | Language | Analytics Engineering exam | Architect exam |
 |---|---|---|
 | English | Yes | Yes |
-| Japanese | **Yes** — localised, announced late 2025 | Reported as part of a fully localised Japanese programme — verify |
+| Japanese | **Yes**, localised, announced late 2025 | Reported as part of a fully localised Japanese programme, verify |
 | French | Not yet, as of Feb 2026 | **Yes** |
-| Spanish, Italian, German | No evidence — assume English only | No evidence — assume English only |
+| Spanish, Italian, German | No evidence, assume English only | No evidence, assume English only |
 
 **Always re-verify before a session promises anything.** Ask partner support or check the certification pages;
-this is exactly the kind of detail that moves. Getting it wrong in either direction is costly — telling a
+this is exactly the kind of detail that moves. Getting it wrong in either direction is costly; telling a
 French cohort the AE exam is available in French when it isn't wastes their preparation, and telling a Japanese
 cohort it's English-only understates what dbt Labs has built for them.
 
 For the certification slide in a non-English session, state the exam language explicitly. If the exam is
-English-only for that audience, say so plainly and early — it changes how people prepare, and it's better
+English-only for that audience, say so plainly and early; it changes how people prepare, and it's better
 heard in the session than discovered at the exam.
 
 ## Source material is mostly English
@@ -56,36 +56,36 @@ heard in the session than discovered at the exam.
 ## Layout and typography per language
 
 Word budgets in `slide-library.md` are calibrated for English. Adjust, then **check the rendered slide
-visually** — these are heuristics, not guarantees.
+visually**; these are heuristics, not guarantees.
 
 | Language | Budget adjustment | Typographic notes |
 |---|---|---|
 | French | ×0.85 | Narrow non-breaking space before `; : ! ?`. Guillemets « » for quotes. Watch elision. |
 | Spanish | ×0.85 | Opening ¿ and ¡ required. Longer compound phrasing than English. |
 | Italian | ×0.85 | Similar expansion to French; no space before punctuation. |
-| German | **×0.7** | Expands most — often 30% longer. Compound nouns break layouts badly; prefer shorter synonyms over hyphenation on slides. Formal *Sie* unless the partner is clearly informal. |
-| Japanese | Count characters, ≈2× the English word budget | No inter-word spaces; line breaking differs. Avoid breaking product names across lines. Confirm the template's font renders Japanese — check a real slide before building the full deck. |
+| German | **×0.7** | Expands most, often 30% longer. Compound nouns break layouts badly; prefer shorter synonyms over hyphenation on slides. Formal *Sie* unless the partner is clearly informal. |
+| Japanese | Count characters, ≈2× the English word budget | No inter-word spaces; line breaking differs. Avoid breaking product names across lines. Confirm the template's font renders Japanese, check a real slide before building the full deck. |
 
-German is where decks break. If a heading overflows, rewrite it shorter rather than shrinking the font — the
+German is where decks break. If a heading overflows, rewrite it shorter rather than shrinking the font; the
 template's type scale is part of the brand.
 
 ## Speaker notes can be a different language from the slides
 
 Ask, because both combinations are common:
 
-- **Slides local, notes local** — a native-speaker presenter delivering in-language
-- **Slides local, notes English** — the audience reads their language, an English-speaking SA presents from
+- **Slides local, notes local**: a native-speaker presenter delivering in-language
+- **Slides local, notes English**: the audience reads their language; an English-speaking SA presents from
   English notes, often with a local co-presenter
-- **Slides English, notes local** — rarer, but happens when the partner wants reusable English assets and a
+- **Slides English, notes local**: rarer, but happens when the partner wants reusable English assets and a
   local delivery
 
 Default to matching, and ask when the session involves a co-presenter.
 
-## Quality expectations — be straight about this
+## Quality expectations: be straight about this
 
 Output quality in these five languages is good, and for internal enablement material it's generally
-presentation-ready. For a high-stakes session — a new marquee partner, an executive audience, anything that
-will be reused as a standing asset — **have a native speaker review before presenting.** Technical register in
+presentation-ready. For a high-stakes session (a new marquee partner, an executive audience, anything that
+will be reused as a standing asset), **have a native speaker review before presenting.** Technical register in
 particular drifts: the natural phrasing for "incremental model" or "deferral" in French or Japanese is a
 choice, and a native reviewer will make it sound like it was written by a practitioner rather than translated.
 
@@ -94,8 +94,8 @@ that reads as local and one that reads as translated.
 
 ## Slide shapes
 
-Nothing structural changes — the five-act arc, the certification block, and the platform content all work the
+Nothing structural changes: the five-act arc, the certification block, and the platform content all work the
 same. What changes is word budget, punctuation, and any claim about language availability.
 
 One addition worth making in non-English sessions: a short slide naming **which resources exist in their
-language** — the exam, if applicable — and which don't. Partners plan around it.
+language** (the exam, if applicable), and which don't. Partners plan around it.

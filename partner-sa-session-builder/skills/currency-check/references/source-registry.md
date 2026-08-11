@@ -26,10 +26,10 @@ The currency check diffs live sources against this table and reports differences
 | dbt Canvas | `/docs/platform/canvas` | Still fully documented publicly. Excluded by owner instruction. |
 | dbt Insights | `/docs/explore/dbt-insights` | Beta. Still documented. Excluded. |
 | dbt Copilot (all surfaces) | `/docs/dbt-ai/*`, `/docs/dbt-ai/analyst-agent` | Still documented. Excluded. |
-| Cost Insights — **in scope** | `/docs/explore/cost-insights` | Separate feature, approved for use. |
+| Cost Insights, **in scope** | `/docs/explore/cost-insights` | Separate feature, approved for use. |
 
 **Check for:** whether the public docs have caught up and now mark Canvas / Insights / Copilot as deprecated
-or removed. If so, flag it — the internal-only caveat in `brand-voice.md` can then relax to a public one.
+or removed. If so, flag it; the internal-only caveat in `brand-voice.md` can then relax to a public one.
 Also check the dbt pricing page, which currently still lists all three as tier features.
 
 ## 3. Cross-platform Mesh
@@ -42,7 +42,7 @@ Also check the dbt pricing page, which currently still lists all three as tier f
 | Required flag | same | `use_catalogs_v2: true` |
 | Plan gating | `getdbt.com/pricing`, `/docs/mesh/govern/project-dependencies` | dbt Mesh cross project and cross platform both listed as Enterprise tier |
 
-**Check for:** new platform combinations, especially **Fabric** — if Fabric is added, update both Fabric
+**Check for:** new platform combinations, especially **Fabric**. If Fabric is added, update both Fabric
 platform profiles, which currently forbid showing it.
 
 ## 4. dbt Wizard CLI
@@ -67,7 +67,7 @@ platform profiles, which currently forbid showing it.
 | Works with | same | dbt Core, dbt platform, Fusion, external orchestrators |
 | Key config | `/reference/resource-configs/lag-tolerance` | `lag_tolerance`, compares against underlying data freshness |
 | Price | `getdbt.com/pricing` | **$0.094 per billable DATT**, 30-day free trial for eligible new orgs, billed monthly |
-| Diagnosis command | `/docs/deploy/dbt-state-about` | `dbt-state explain` — experimental, dbt Core v1.7–v1.12, not in Fusion or platform |
+| Diagnosis command | `/docs/deploy/dbt-state-about` | `dbt-state explain`, experimental, dbt Core v1.7–v1.12, not in Fusion or platform |
 | Billing start after SAO trial | same | 1 Sep 2026 |
 
 **Check for:** Preview → GA (which would also introduce a migration timeline for SAO users), price change,
@@ -82,13 +82,13 @@ platform profiles, which currently forbid showing it.
 | Price | Study guide | $200 per attempt; SI partner discount commonly 20% |
 | Validity | Study guide | 2 years |
 | Voucher / code terms | Partner support | Vouchers $200, expire 1 year; discount codes one cert each, redeem within 90 days |
-| dbt Core version tracked | FY27 study guide | **Verify every run — this changes** |
+| dbt Core version tracked | FY27 study guide | **Verify every run; this changes** |
 | Exam language availability | Internal partner support + certification pages | AE exam localised in **Japanese**; Architect exam available in **French** (AE not, as of Feb 2026). No evidence for Spanish, Italian, German. Older study guides saying "English only" are stale. |
 | Registration | Talview | `pages.talview.com/dbtlabs/certifications/` |
-| Partner portal | — | `partners.getdbt.com`, credentials dashboard at `/px/-/credentials-dashboard` |
+| Partner portal | n/a | `partners.getdbt.com`, credentials dashboard at `/px/-/credentials-dashboard` |
 
 **Check for:** the dbt Core version the exam tracks, price changes, any new certification or retirement of an
-existing one, and **new exam language localisations** — this is actively expanding and feeds `languages.md`.
+existing one, and **new exam language localisations**; this is actively expanding and feeds `languages.md`.
 
 ## 7. Pricing
 
@@ -100,7 +100,7 @@ existing one, and **new exam language localisations** — this is actively expan
 | Annual discount | same | Up to 22%, starting at 5% |
 | Combined pricing | Merger reporting | **Does not exist yet.** Products priced separately; bundling expected over time. |
 
-**Check for:** any bundled Fivetran + dbt pricing appearing — that is the single highest-value change to catch,
+**Check for:** any bundled Fivetran + dbt pricing appearing; that is the single highest-value change to catch,
 and it would rewrite `pricing.md`. Also watch for the dbt pricing page dropping Canvas / Insights / Copilot
 rows.
 
@@ -117,7 +117,7 @@ rows.
 | Workspace API multi-source | same | Will be removed, date to be confirmed |
 | Account ID migration | same | Census `341876425553` → add Fivetran `834469178297` |
 
-**Check for:** the several "to be confirmed" dates becoming concrete — these are the highest-churn items in the
+**Check for:** the several "to be confirmed" dates becoming concrete; these are the highest-churn items in the
 whole registry. Also check `fivetran.com/docs/changelog` for new EOL announcements, and note that Fivetran
 posts EOL notices 12 months ahead.
 
@@ -130,17 +130,20 @@ posts EOL notices 12 months ahead.
 | Constraint enforcement | `/reference/resource-properties/constraints` | Only `not_null` broadly enforced. No platform enforces `unique` or `primary_key` except Postgres. Databricks enforces `check`; Snowflake and BigQuery don't support it. Spark defines all, enforces none. Athena supports none. |
 | Constraint prerequisites | same | `table` and `incremental` materializations only; requires enforced contract with `data_type` on every column |
 
-**Check for:** any adapter gaining or losing a strategy, and any change in constraint enforcement — both feed
+**Check for:** any adapter gaining or losing a strategy, and any change in constraint enforcement, both feed
 the comparison tables in `multi-platform.md`, which are the substance of multi-platform sessions.
 
 ## 10. Deck template
 
 | Claim | Source | Baseline |
 |---|---|---|
-| Template and layouts | Google Slides template ID in `slide-library.md` | Verified accessible; layout IDs recorded |
+| Template and layouts | Google Slides template ID in `slide-library.md` | 11 layouts: Title slide, Content slide, Text heavy slide, Text heavy slide reversed, Simple, Simple - Dark, Photo slide (×2, duplicate name), Simple branded, Blank, Blank - Dark. **No table layout.** |
 
-**Check for:** template still accessible, layout names and IDs unchanged. If dbt Labs issues a new partner
-template, that supersedes this and needs a fresh layout audit.
+**Check for:** template still accessible, and **run `list_layouts` and diff the names against the table in
+`slide-library.md`.** Every layout named in the block mapping must exist in the template; a block pointing at a
+layout that isn't there cannot be built on-brand, and the deck will either fail or silently fall back to a
+generic Google layout. Watch for exact-name drift too: hyphen versus en-dash in "Simple - Dark" breaks name
+matching. If dbt Labs issues a new partner template, that supersedes this and needs a full layout audit.
 
 ## 11. Merger and org facts
 

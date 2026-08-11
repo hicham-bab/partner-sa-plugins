@@ -14,7 +14,7 @@ Internal plugins for partner solutions architects. Maintained by Hicham Babahmed
 
 ---
 
-## Install — Claude Code (terminal)
+## Install: Claude Code (terminal)
 
 Add the marketplace once, then install:
 
@@ -24,7 +24,7 @@ Add the marketplace once, then install:
 ```
 
 Because this repo is private, you need working git credentials. **HTTPS with `gh auth login` is the most
-reliable route** — SSH also works if your keys are set up:
+reliable route**; SSH also works if your keys are set up:
 
 ```
 gh auth login
@@ -67,16 +67,32 @@ first of each month after its currency check, so refreshing monthly is enough.
 
 ---
 
-## Install — Cowork / desktop app
+## Install: Cowork / desktop app
 
 Claude Code installs plugins from a directory; the desktop app installs from a `.plugin` zip. Grab
-**`partner-sa-session-builder.plugin`** from the repo root (or from the release Hicham circulates) and open it —
+**`partner-sa-session-builder.plugin`** from the repo root (or from the release Hicham circulates) and open it;
 the desktop app will offer to install it.
 
 Desktop installs don't auto-update, so replace the file when a new version ships. Check the version in
 `.claude-plugin/plugin.json` against your installed copy if you're unsure.
 
 ---
+
+## Before your first deck: template access
+
+Decks are built by **duplicating the branded Google Slides template** (`branding deck template`) and filling its
+layouts. Nothing is generated from scratch, so you need:
+
+1. **Access to the template**: it's owned by Hicham. Ask him to share it, or point the plugin at your own copy
+   by editing the presentation ID in
+   `skills/session-deck-builder/references/slide-library.md`.
+2. **A connected Google account** with Slides and Drive access.
+
+If the duplicate step fails with a permission error, that's why. The plugin is built to stop and tell you rather
+than fall back to a blank presentation, because a blank deck bypasses the brand master and comes out off-brand.
+
+Using your own copy is fine, but keep the layout names identical; the plugin maps every slide type to a layout
+**by name**, and it verifies them at run time.
 
 ## Using it
 
@@ -86,8 +102,8 @@ Ask for a deck in plain language, or run the command:
 /session-deck
 ```
 
-It asks a short round of questions — session type, data platforms, audience, duration, vertical, Fivetran
-sources, language — then researches, **stops at an outline for your approval**, and only then builds the deck.
+It asks a short round of questions (session type, data platforms, audience, duration, vertical, Fivetran
+sources, language), then researches, **stops at an outline for your approval**, and only then builds the deck.
 
 To re-verify the facts it relies on:
 
@@ -104,7 +120,7 @@ Tell Hicham, or open an issue. Two things worth flagging quickly:
 - **A stale or wrong fact in a deck.** These are grounded in docs at build time, but naming and availability
   move fast. If something's wrong, it likely needs the source registry updating.
 - **Editorial calls you disagree with.** Some features are deliberately out of scope for session content. That's
-  a decision, not an oversight — but if it's wrong, say so.
+  a decision, not an oversight. But if it's wrong, say so.
 
 If you want to change the plugin itself, the reference files under
 `partner-sa-session-builder/skills/session-deck-builder/references/` are where the substance lives. Bump the
