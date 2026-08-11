@@ -30,6 +30,33 @@ and the skill triggers on its own.
 - A handover that reports what was checked: slides whose text was rewritten to fit, diagrams reused versus
   reserved for you to paste, and for non-English decks, how much came from existing material versus translation
 
+## It picks the best existing slides first
+
+The main job is curation, not generation. For every block in the outline, the skill assembles a corpus of
+candidate decks (your own registry first, then Slides and Drive search, plus anything you attach), scores the
+candidates per block on currency, argument fit, platform and audience match, language, visual value, and
+provenance, and then reuses the winner. Writing a slide from scratch is what happens when nothing good exists.
+
+Stale facts are a gate rather than a penalty: a slide naming a retired product, a superseded price, or a passed
+end-of-life date is disqualified as-is, though its diagram or structure can still be reused once the fact is
+re-resolved from the docs.
+
+Reuse means rebuilding the slide on the current branded template, keeping its wording and its diagram. Source
+decks are often off-template or carry older branding, so the rebuild is an upgrade. There is no cross-deck slide
+copy in the Slides API, which is the mechanical reason it works this way.
+
+The outline you approve shows provenance per slide (`reuse`, `diagram`, `reserve`, or `new`) with the source
+deck and slide number, so you approve what gets reused as well as what gets said, and the handover reports the
+tally. Every reused slide carries its source in the speaker notes.
+
+Assembled decks read as a patchwork unless the narrative layer is rewritten, so reused slides get a new title
+and a fresh bridge line, and are normalised to one running example, one platform vocabulary, and one house
+style. If unifying a slide is more work than writing it, it gets written.
+
+**The corpus registry** lives at `skills/session-deck-builder/references/deck-corpus.local.md` and is
+deliberately untracked, since it holds internal presentation IDs and this repo is public. Keep your own, one row
+per deck: ID, date, language, and what it's best for. Without it the skill falls back to search and says so.
+
 ## Layout, fit, and diagrams
 
 These decks go in front of the partner's customers, so two things are enforced rather than hoped for.

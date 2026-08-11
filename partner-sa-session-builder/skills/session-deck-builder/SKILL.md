@@ -34,9 +34,11 @@ content and official docs, telling one continuous story adapted to the partner i
 7. **Always ask the deck language, in the first round of questions.** AskUserQuestion takes at most four
    questions per call and four options per question, so a five-question round silently loses one. Follow the
    call membership in `references/intake.md` exactly; never regroup it on the fly.
-8. **Reuse diagrams before drawing them, and never let an architecture slide degrade into bullets.** Search
-   internal decks first, per `references/slide-library.md`. If a diagram can't be embedded, reserve the slide
-   and tell the user what to paste.
+8. **Pick the best existing slide before writing a new one.** For every block, search the corpus, score the
+   candidates, and rebuild the winner on the template, per `references/slide-selection.md`. Writing from
+   scratch is the fallback, not the default. Reuse diagrams rather than drawing them, per
+   `references/slide-library.md`; if a diagram can't be embedded, reserve the slide and tell the user what to
+   paste.
 9. **Text must fit the placeholder.** Per-placeholder character budgets and the Stage 4.5 fit check live in
    `references/layout-and-fit.md`. Never shrink a font, never set a font family, never truncate to fit.
 
@@ -75,9 +77,13 @@ strategies, constraint enforcement, catalog/Iceberg support). Do not concatenate
 translating anything. Track which blocks were reused, which came from localised docs, and which you
 translated.
 
-**Find the diagrams now, not at build time.** For the architecture anchor and any conceptual diagram, search
-existing internal decks per the diagram procedure in `references/slide-library.md`. Knowing whether a diagram
-exists changes the outline, because a reserved diagram slide is not a bullet slide.
+**Build the slide corpus now, not at build time.** Read `references/slide-selection.md` and run steps 1 and 2:
+assemble the candidate decks, then score candidates per outline block. This is the main research output, not a
+side quest. Knowing which slides already exist changes the outline itself, because a reused slide, a reserved
+diagram, and a written-from-scratch slide are three different things.
+
+Start from `references/deck-corpus.local.md` if it exists, then search. Any deck the user attached or linked
+outranks anything you find.
 
 Produce a research brief: key points, each with a resolved source link. Do not proceed with unresolved
 platform-specific claims.
@@ -92,7 +98,11 @@ architects or tech leads, or the partner works across more than one data platfor
 cost, or build efficiency; dbt Wizard CLI and dbt State can each carry a session on their own. Build the
 outline as a table:
 
-| # | Act | Layout | Title | Key message | Source |
+| # | Act | Layout | Title | Key message | Source | Provenance |
+
+`Source` is the resolved link backing the claim. `Provenance` is the selection decision from
+`references/slide-selection.md`: `reuse: <deck> s<N>`, `diagram: <deck> s<N>`, `reserve: <deck> s<N>`, or
+`new`. Show it at the gate, so the user approves what gets reused as well as what gets said.
 
 Include the running example, chosen per `references/intake.md`, and show which act each slide belongs to.
 Present it and wait. Accept redlines and revise the outline; never skip ahead to building.
@@ -108,7 +118,10 @@ Read `references/slide-library.md` for the layout mapping and the diagram proced
 3. Delete the template's example slides.
 4. Add slides against the matched layout IDs, filling placeholders within the character budgets in
    `references/layout-and-fit.md`. Delete placeholders you don't need rather than filling them.
-5. Reuse or reserve the diagrams, per `references/slide-library.md`. Never substitute bullets for a diagram.
+5. For every slide marked for reuse, `get_slide` the source and rebuild it on the mapped template layout,
+   then unify it per step 4 of `references/slide-selection.md`: new title, new bridge line, the partner's
+   vocabulary, this deck's running example. Reuse or reserve the diagrams per `references/slide-library.md`,
+   and never substitute bullets for a diagram.
 6. Write speaker notes for every slide, each opening with its bridge line. Notes carry the prose that
    doesn't fit on the slide; that is what they are for.
 
@@ -148,6 +161,10 @@ Verify before handing over, and report the result honestly rather than claiming 
 - **The architecture anchor is a diagram**, either reused, embedded, or explicitly reserved for pasting, and
   never silently converted to bullets
 - **The deck is in the language that was asked for**, with the target-language sourcing split reported
+- **Selection actually ran**: reused, part-reused, reserved, and new counted and reported, with provenance in
+  the speaker notes of every reused slide
+- **Reused slides are unified**, not stitched: bridge lines read as one paragraph, one running example, one
+  vocabulary, one house style
 
 If a check fails, fix it or state plainly what's unresolved. Do not report a deck as ready when it isn't.
 
@@ -162,7 +179,7 @@ Finish by sharing the deck link, plus the run-of-show file for hackathons.
 | Fivetran docs | web fetch on `fivetran.com/docs` |
 | Partner context | Notion, Google Drive, Salesforce, Slack connectors |
 | Deck build | Google Slides connector: `duplicate`, `list_layouts`, `list_slides`, `add_slide`, `add_text`, `update_text`, `add_image`, `add_table`, `set_speaker_notes`, `delete_slide` |
-| Diagram reuse | Google Slides `search`, `list_slides`, `get_slide` for existing internal diagrams; Drive `search_files` for exported images |
+| Slide selection | Google Slides `search` and `fetch` to find and skim candidate decks, `list_slides` and `get_slide` to read the slides worth scoring; Drive `search_files` for decks and exported images |
 | Fit check | Google Slides `list_slides`, `get_slide` to read back what actually landed in each placeholder |
 
 If the Google Slides connector isn't available, say so and stop; do not silently fall back to producing
@@ -174,6 +191,7 @@ a `.pptx`, since that loses the brand template. Offer the outline as a markdown 
 - `references/storytelling.md`: five-act arc, bridge lines, continuity gates
 - `references/slide-library.md`: slide blocks mapped to template layouts, template ID, diagram reuse procedure
 - `references/layout-and-fit.md`: per-placeholder character budgets, the fit check, visual rhythm, prohibitions
+- `references/slide-selection.md`: building the corpus, scoring candidate slides, reuse thresholds, provenance
 - `references/session-recipes.md`: enablement and hackathon slide sequences
 - `references/research-protocol.md`: source hierarchy, citation and verification rules
 - `references/brand-voice.md`: naming and style rules, product naming currency, out-of-scope features

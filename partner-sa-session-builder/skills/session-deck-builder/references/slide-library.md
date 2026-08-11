@@ -152,6 +152,9 @@ pairs. A dense grid nobody can read is worse than three sentences that land.
 
 **Hand-drawing an architecture diagram out of shapes is the last resort, not the first move.** An existing
 internal diagram is already on-brand, already reviewed, and already familiar to the team who will present it.
+
+This section covers images and diagrams. For choosing whole slides to reuse, and the scoring that decides it,
+see `slide-selection.md`; the corpus you build there is the same corpus you search here.
 A grid of `add_shape` rectangles is none of those things, and it is the single clearest tell that a deck was
 generated rather than built.
 
