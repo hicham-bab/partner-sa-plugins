@@ -1,0 +1,15 @@
+{
+  "_comment": "Copy the three keys below into your team project's .claude/settings.json and replace ORG with the real GitHub org. Teammates then get the marketplace registered and the plugin installed automatically on their next Claude Code session.",
+  "extraKnownMarketplaces": {
+    "dbt-partner-sa-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "ORG/partner-sa-plugins"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "partner-sa-session-builder@dbt-partner-sa-plugins": true
+  },
+  "autoInstallEnabledPlugins": true
+}
