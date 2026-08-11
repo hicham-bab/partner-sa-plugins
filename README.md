@@ -69,9 +69,11 @@ first of each month after its currency check, so refreshing monthly is enough.
 
 ## Install: Cowork / desktop app
 
-Claude Code installs plugins from a directory; the desktop app installs from a `.plugin` zip. Grab
-**`partner-sa-session-builder.plugin`** from the repo root (or from the release Hicham circulates) and open it;
-the desktop app will offer to install it.
+Claude Code installs plugins from a directory; the desktop app installs from a `.plugin` zip. Download
+**`partner-sa-session-builder.plugin`** from the
+[latest release](https://github.com/hicham-bab/partner-sa-plugins/releases/latest) and open it; the desktop app
+will offer to install it. The zip isn't tracked in git, so a clone won't contain one; the monthly currency
+check rebuilds it locally, and each release carries the matching build.
 
 Desktop installs don't auto-update, so replace the file when a new version ships. Check the version in
 `.claude-plugin/plugin.json` against your installed copy if you're unsure.
