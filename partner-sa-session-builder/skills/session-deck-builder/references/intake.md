@@ -50,9 +50,20 @@ you can only ask one question, ask that one.
 ## Call 1: always asked (Q1, Q2, Q2b, Q4, one screen)
 
 **Q1. What kind of session is this?**
-- Partner enablement session *(recommended)*: technical training for partner staff
+- Technical session *(recommended)*: context slides, then a live demo
+- Partner enablement session: technical training for partner staff
 - Hackathon / workshop: hands-on build, needs a run-of-show
 - Mixed: enablement then build
+
+Most partner sessions are the first one: a short run of context slides, then the product doing the arguing.
+It is the default for a reason, and it changes the deliverables, not just the slide count.
+
+| Answer | Shape | Extra deliverable |
+|---|---|---|
+| Technical session | `demo-flows.md`, context slides then demo chapters | `demo-flow.md` |
+| Partner enablement | `session-recipes.md`, the five-act arc in full | none |
+| Hackathon / workshop | `session-recipes.md` hackathon recipe | facilitator run-of-show |
+| Mixed | Enablement then build, with demo chapters in the middle | `demo-flow.md`, merged into the run-of-show |
 
 **Q2. Which data platforms does the partner work with?** (**multi-select**)
 - Snowflake
@@ -171,12 +182,24 @@ never invents a reference.
 Batch these into one call. Skip any that don't apply, and skip the call entirely if none do. Never exceed four;
 if five would apply, drop Q8 and infer the outcome from the session type instead.
 
+Priority order, top to bottom. If more than four apply, keep the top four and infer the rest, saying the
+inference in the closing echo.
+
 | Ask | Only when | Options |
 |---|---|---|
 | Which platform is primary? | Q2 returned more than one | The selected platforms, up to four |
+| Which demo track? | Q1 is Technical or Mixed | Foundations · Platform and AI · Both (long sessions) · Let the fluency answer decide |
 | Fabric adapter? | Fabric is in Q2 | Warehouse (T-SQL, `dbt-fabric`) · Lakehouse (Spark, `dbt-fabricspark`) |
 | Speaker notes language? | Q2b is not English | Match the slides · Keep notes in English |
 | Q8, see below | Not inferable from the session type | The four below |
+
+**The primary-platform question belongs here, never in call 1.** Call 1 asks which platforms they work with,
+multi-select. Asking "what is the primary platform" as a single-select in call 1 loses the fact that most
+partners run several, which is the thing the multi-platform handling exists for.
+
+The demo track is described in `demo-flows.md`. Foundations is the Fivetran connector, Managed Data Lake
+Service, and dbt basics. Platform and AI is dbt Wizard, semantic layer, PR, orchestration and jobs, dbt State,
+Cost Insights, and the dbt MCP server.
 
 **Q8. What should they be able to do afterward?**
 - Position dbt + Fivetran to their own clients

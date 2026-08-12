@@ -3,6 +3,23 @@
 A recipe is an ordered selection of blocks from `slide-library.md`, arranged into the five acts from
 `storytelling.md`. Acts never reorder except the documented act 3 / act 4 swap.
 
+## Technical session: context then demo
+
+The default shape, and the one most partner sessions want. Full detail, chapter patterns, both demo tracks, the
+environment checklist, and the demo discipline rules live in `demo-flows.md`. Read that file rather than
+improvising a demo order.
+
+| Act | Blocks |
+|---|---|
+| 0 | Title · Agenda with timings |
+| 1 | The world / what hurts today · Audience context |
+| 2 | The data journey (introduces running example) · Whole-picture architecture |
+| 3 to 4 | Demo chapters, each as setup slide, demo, payoff slide |
+| 5 | Recap · Certification ladder · Partner portal · Next steps, naming the demo repo · Q&A |
+
+Context slides are acts 1 and 2 compressed to 6 to 12 slides depending on duration. The demo carries acts 3
+and 4. Deliverables are the deck plus a `demo-flow.md`.
+
 ## Partner enablement session
 
 Default shape, 60–90 minutes, ~22 slides, 1 lab.

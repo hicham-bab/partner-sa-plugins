@@ -5,8 +5,10 @@ description: >
   adapted to the partner's data platforms, Fivetran sources, vertical, and relative dbt/Fivetran fluency.
   Supports partners running several data platforms, with a primary platform carrying the story and the rest
   appearing as contrast. Can produce decks in English, French, Spanish, Italian, German, or Japanese.
+  Handles demo-led technical sessions, producing a demo flow with chapter timings and fallbacks alongside
+  the deck.
   Use when the user wants to build, prepare, or generate a session deck, enablement deck, workshop deck,
-  hackathon deck, partner training, or partner presentation; when they describe an upcoming partner
+  hackathon deck, demo flow, partner training, or partner presentation; when they describe an upcoming partner
   session and want materials for it; or when they say things like "I'm running a session for this
   partner next week", "build me a deck for", "prep my enablement session", or "/session-deck".
   Covers Snowflake, Databricks, BigQuery, Microsoft Fabric, and other data platforms.
@@ -24,16 +26,17 @@ content and official docs, telling one continuous story adapted to the partner i
    resolved, leave it out and say so.
 2. **Never invent connector names, customer references, logos, or case studies.** Resolve connector names
    from Fivetran docs. Customer stories come from internal sources only.
-3. **Confirm the data platforms, never infer them.** Ask even when the brief seems to state it. Partners often
-   run several, the question is multi-select, and if more than one is chosen, establish which is primary.
+3. **Confirm the data platforms, never infer them.** Ask even when the brief seems to state it. The question is
+   **multi-select** and asks which platforms they work with, because most partners run several. Which one is
+   primary is a separate, later question, never a single-select in call 1.
 4. **Stop at the outline gate.** Do not create or populate a deck before the user approves the outline.
 5. **Duplicate the branded template.** Never build a deck from scratch and never use markdown-to-slides
    generation, both bypass the brand template.
 6. **Always start from the basics.** Every deck opens at first principles regardless of audience
    seniority. Pace changes; the arc does not.
-7. **Always ask the deck language, in the first round of questions.** AskUserQuestion takes at most four
-   questions per call and four options per question, so a five-question round silently loses one. Follow the
-   call membership in `references/intake.md` exactly; never regroup it on the fly.
+7. **Always ask the deck language, in call 1.** AskUserQuestion takes at most four questions per call and four
+   options per question, so a five-question round silently loses one, and language is what got lost twice.
+   Send call 1 exactly as written in Stage 1; never regroup, reword, or compress it.
 8. **Pick the best existing slide before writing a new one.** For every block, search the corpus, score the
    candidates, and rebuild the winner on the template, per `references/slide-selection.md`. Writing from
    scratch is the fallback, not the default. Reuse diagrams rather than drawing them, per
@@ -48,16 +51,57 @@ Run these five stages in order. Announce nothing; just do the work and surface t
 
 ### Stage 1: Discovery
 
-Read `references/intake.md` and run it. Parse any brief the user already gave, ask only the gaps, and
-close with the one-paragraph session profile echo for confirmation.
+Parse any brief the user already gave, ask only the gaps, and close with the one-paragraph session profile
+echo for confirmation. `references/intake.md` holds the routing logic and the follow-ups; **call 1 below is
+literal and is not to be reworded, reordered, or compressed.**
 
-Use the AskUserQuestion tool, in the three calls `intake.md` defines: call 1 is session type, platforms,
-**deck language**, and duration; call 2 is audience, dbt/Fivetran fluency, Fivetran source, and vertical;
-call 3 is only the follow-ups that apply. Four questions per call, four options per question, recommended
-option first. Target under 60 seconds of clicking.
+**Call 1, exactly these four questions, in one AskUserQuestion call.** Drop only a question the brief has
+already answered, and never substitute a different question for a dropped one:
 
-The deck language is asked in call 1, always, and it changes Stage 2 as well as Stage 4: research the target
-language first rather than translating at the end.
+```
+1. header "Session type"   multiSelect: false
+   "What kind of session is this?"
+   - Technical session: context slides, then a live demo   (recommended)
+   - Partner enablement session: technical training for partner staff
+   - Hackathon / workshop: hands-on build, needs a run-of-show
+   - Mixed: enablement then build
+
+2. header "Platforms"      multiSelect: TRUE
+   "Which data platforms does the partner work with?"
+   - Snowflake
+   - Databricks
+   - BigQuery
+   - Microsoft Fabric
+
+3. header "Language"       multiSelect: false
+   "What language should the deck be in?"
+   - English   (recommended)
+   - French
+   - German
+   - Spanish
+
+4. header "Duration"       multiSelect: false
+   "How long is the session?"
+   - 60 to 90 minutes
+   - Half day (3 to 4 h)
+   - Full day
+   - Multi-day
+```
+
+Three failures have actually happened here. Do not repeat them:
+
+- **Never ask "which is the *primary* platform" in call 1.** Question 2 is multi-select and asks which
+  platforms they work with. Primary is a call 3 follow-up, asked only when more than one was selected.
+- **Never drop the language question.** If four questions feel like too many, drop duration and infer it.
+- **Never add a fifth question or a fifth option.** The tool takes four of each and appends its own "Other",
+  which is where Italian, Japanese, Redshift, Fabric variants, and anything else arrive.
+
+**Call 2**, unless the brief settles them: audience, dbt/Fivetran fluency, Fivetran source category, vertical.
+**Call 3**, only the follow-ups that apply, priority order in `references/intake.md`: primary platform, demo
+track, Fabric adapter, speaker-notes language.
+
+The deck language changes Stage 2 as well as Stage 4: research the target language first rather than
+translating at the end.
 
 ### Stage 2: Research, internal-first
 
@@ -89,6 +133,10 @@ Produce a research brief: key points, each with a resolved source link. Do not p
 platform-specific claims.
 
 ### Stage 3: Outline gate
+
+**If the session type is Technical or Mixed**, read `references/demo-flows.md` first and build the outline
+around demo chapters: a setup slide, the demo, a payoff slide, per chapter. The demo carries acts 3 and 4, so
+the context slides compress to 6 to 12. Pick the track, Foundations or Platform and AI, from the call 3 answer.
 
 Read `references/storytelling.md`, `references/session-recipes.md`, and `references/certifications.md`, plus
 the "Out of scope" section of `references/brand-voice.md`: some features must not be built into a session at
@@ -132,8 +180,14 @@ from the start; do not draft in English and translate. Product names, code, conf
 names stay in English, and dbt stays lowercase in every language. Scale word budgets, and tell the user that a
 native-speaker review is worth it before a high-stakes session.
 
-For hackathons and workshops, also produce a facilitator run-of-show as a separate markdown file with
-wall-clock timings, checkpoint gates, and fallbacks for a broken environment.
+For Technical and Mixed sessions, also produce a `demo-flow.md` per `references/demo-flows.md`: environment
+checklist, pre-seeded state, then per chapter the numbered steps with exact click paths or commands, the value
+line to say, the failure mode to watch, and the named fallback. Wall-clock timings must sum to the session
+length including context slides and Q&A.
+
+For hackathons and workshops, produce a facilitator run-of-show as a separate markdown file with
+wall-clock timings, checkpoint gates, and fallbacks for a broken environment. For Mixed sessions the demo flow
+merges into the run-of-show rather than shipping as two files.
 
 ### Stage 4.5: Fit check
 
@@ -165,6 +219,9 @@ Verify before handing over, and report the result honestly rather than claiming 
   the speaker notes of every reused slide
 - **Reused slides are unified**, not stitched: bridge lines read as one paragraph, one running example, one
   vocabulary, one house style
+- **For demo sessions**: every chapter has a setup slide, a payoff slide, and a named fallback; timings sum to
+  the session length; release phases stated for anything in Beta or Preview; the demo runs on the primary
+  platform and not a different one
 
 If a check fails, fix it or state plainly what's unresolved. Do not report a deck as ready when it isn't.
 
@@ -192,7 +249,8 @@ a `.pptx`, since that loses the brand template. Offer the outline as a markdown 
 - `references/slide-library.md`: slide blocks mapped to template layouts, template ID, diagram reuse procedure
 - `references/layout-and-fit.md`: per-placeholder character budgets, the fit check, visual rhythm, prohibitions
 - `references/slide-selection.md`: building the corpus, scoring candidate slides, reuse thresholds, provenance
-- `references/session-recipes.md`: enablement and hackathon slide sequences
+- `references/session-recipes.md`: technical, enablement, and hackathon slide sequences
+- `references/demo-flows.md`: demo chapter pattern, the Foundations and Platform-and-AI tracks, demo discipline
 - `references/research-protocol.md`: source hierarchy, citation and verification rules
 - `references/brand-voice.md`: naming and style rules, product naming currency, out-of-scope features
 - `references/certifications.md`: both certifications and the partner portal (standard act 5 block)

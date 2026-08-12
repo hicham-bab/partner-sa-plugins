@@ -25,10 +25,40 @@ and the skill triggers on its own.
 ## What you get
 
 - A Google Slides deck in the branding template, with speaker notes and sources per slide
+- For technical sessions: a `demo-flow.md` with chapter timings, exact click paths, the value line to say,
+  the failure mode to watch, and a named fallback per chapter
 - For hackathons and workshops: a facilitator run-of-show with wall-clock timings, checkpoint gates, and
   fallbacks for a broken environment
 - A handover that reports what was checked: slides whose text was rewritten to fit, diagrams reused versus
   reserved for you to paste, and for non-English decks, how much came from existing material versus translation
+
+## Demo-led sessions are the default
+
+Most partner sessions are context slides then a live demo, so **Technical session** is the first session type
+and it changes the deliverables rather than just the slide count. Context slides compress to 6 to 12, the demo
+carries the middle of the arc, and each chapter is bookended: a setup slide saying what you are about to see,
+the demo with no slide on screen, then a payoff slide carrying the value line in one sentence.
+
+Two tracks, picked from the fluency answer or asked directly:
+
+**Foundations**, for rooms new to either product: create a Fivetran connector against their real source
+category, land it through Managed Data Lake Service into their own storage in an open table format, then dbt
+basics scaled to the audience (a model, `ref()`, a `.yml` with tests, `dbt build`, lineage and docs).
+
+**Platform and AI**, for partners already on both: dbt Wizard authoring a model with its tests and docs, a
+semantic layer metric queried from two places, the change opened as a PR with CI, orchestration and jobs, dbt
+State skipping and cloning what didn't really change, Cost Insights, and the dbt MCP server exposing governed
+metadata to an agent. Each chapter hands to the next, so authoring leads to governance leads to orchestration
+leads to cost.
+
+Release phases get stated out loud, since dbt State is in Preview and Wizard has Beta and Preview surfaces.
+Chapters 5 to 7 are each strong enough to carry a session on their own, so a 90-minute slot runs the first four
+and mentions the rest, rather than demoing seven things badly.
+
+The demo environment is settled before building: which repo to demo from (yours, an existing hands-on-lab repo,
+or a fresh minimal project, never an invented URL), what is actually live, and which platform the demo runs on.
+Plus the discipline that decides whether a demo lands: pre-seed anything slow, a named fallback per chapter,
+live-type almost nothing, scratch schemas only, and the platform-specific timing traps.
 
 ## It picks the best existing slides first
 
