@@ -15,7 +15,7 @@ Do this once per deck, before scoring anything.
 
 | Source | How |
 |---|---|
-| Curated registry | `references/deck-corpus.local.md`, if it exists. Read it first. It's a maintained list of known-good decks with presentation IDs, so lookup beats search. |
+| Curated registry | The user's corpus registry, in whichever of the three forms below they have. Read it first, because lookup beats search. |
 | User-supplied decks | Anything the user attached or linked in the brief. Highest priority, and never skip these. |
 | Google Slides search | `search` with three or four keywords: the topic plus a platform, for example "architecture Fivetran dbt Databricks". Full text, AND logic. |
 | Recent first | Add `modifiedAfter` for the last 12 months, then widen if the result set is thin. |
@@ -112,8 +112,21 @@ unified enough, so check the bridge lines read as one paragraph.
 
 ## The corpus registry
 
-`references/deck-corpus.local.md` is deliberately **not tracked in git**, because it holds internal
-presentation IDs and this repository is public. Each person maintains their own. Format:
+The registry holds internal presentation IDs, so it is never committed to this repository, which is public. It
+exists in one of three forms, and **which one depends on how the plugin was installed**:
+
+| Form | Who it's for | Where |
+|---|---|---|
+| Local file | Claude Code, installed from a directory | `references/deck-corpus.local.md`, gitignored |
+| Linked document | **Claude Desktop and Cowork**, installed from a `.plugin` zip | A Google Doc, Sheet, or Notion page the user names once. Fetch it at Stage 2. |
+| Pasted in the brief | Anyone, one-off | The user pastes the table into the conversation |
+
+**A zip install has no writable plugin directory**, so a desktop user cannot keep a local file inside the
+plugin. Do not tell them to create one. Ask instead: "do you have a deck registry I should read, as a Doc,
+Sheet, or Notion page?" Ask once per session, accept a link or a paste, and offer to produce a registry table
+they can save for next time.
+
+Either way the format is the same:
 
 ```markdown
 | Deck | Presentation ID | Date | Language | Best for |
@@ -122,5 +135,5 @@ presentation IDs and this repository is public. Each person maintains their own.
 | Atelier partenaire, Snowflake | 1def… | 2026-03 | FR | data journey, pricing |
 ```
 
-If the file doesn't exist, say so once, fall back to search, and offer to build the registry from what the
-search found. Do not treat its absence as a reason to skip selection.
+If no registry exists in any form, say so once, fall back to search, and offer to build one from what the search
+found so the next session starts warm. Do not treat its absence as a reason to skip selection.

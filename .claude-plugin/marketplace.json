@@ -9,7 +9,7 @@
       "name": "partner-sa-session-builder",
       "source": "./partner-sa-session-builder",
       "description": "Generate branded Google Slides decks for partner enablement sessions, hackathons, and workshops, adapted to the partner's data platforms, Fivetran sources, vertical, and fluency. Includes a monthly currency check for naming, pricing, and end-of-life changes.",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "author": {
         "name": "Hicham Babahmed"
       },

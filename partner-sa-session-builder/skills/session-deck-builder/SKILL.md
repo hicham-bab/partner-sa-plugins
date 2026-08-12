@@ -96,6 +96,11 @@ Three failures have actually happened here. Do not repeat them:
 - **Never add a fifth question or a fifth option.** The tool takes four of each and appends its own "Other",
   which is where Italian, Japanese, Redshift, Fabric variants, and anything else arrive.
 
+**If AskUserQuestion isn't available**, or the environment only offers single-select, ask the same four in
+prose, numbered, and say explicitly that question 2 takes several answers: "list every platform that applies".
+Never let a missing multi-select turn question 2 into a one-of-four choice, and never let a prose fallback
+quietly drop the language question. The four questions are the requirement; the widget is not.
+
 **Call 2**, unless the brief settles them: audience, dbt/Fivetran fluency, Fivetran source category, vertical.
 **Call 3**, only the follow-ups that apply, priority order in `references/intake.md`: primary platform, demo
 track, Fabric adapter, speaker-notes language.
@@ -126,8 +131,10 @@ assemble the candidate decks, then score candidates per outline block. This is t
 side quest. Knowing which slides already exist changes the outline itself, because a reused slide, a reserved
 diagram, and a written-from-scratch slide are three different things.
 
-Start from `references/deck-corpus.local.md` if it exists, then search. Any deck the user attached or linked
-outranks anything you find.
+Start from the user's corpus registry if they have one, in whichever form `references/slide-selection.md`
+describes, then search. A zip install has no writable plugin directory, so on Claude Desktop and Cowork ask for
+a linked Doc, Sheet, or Notion page rather than a local file. Any deck the user attached or linked outranks
+anything you find.
 
 Produce a research brief: key points, each with a resolved source link. Do not proceed with unresolved
 platform-specific claims.

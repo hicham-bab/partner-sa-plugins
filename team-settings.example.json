@@ -4,7 +4,7 @@
     "dbt-partner-sa-plugins": {
       "source": {
         "source": "github",
-        "repo": "ORG/partner-sa-plugins"
+        "repo": "hicham-bab/partner-sa-plugins"
       }
     }
   },

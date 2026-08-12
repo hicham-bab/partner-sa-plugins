@@ -19,12 +19,12 @@ Internal plugins for partner solutions architects. Maintained by Hicham Babahmed
 Add the marketplace once, then install:
 
 ```
-/plugin marketplace add https://github.com/ORG/partner-sa-plugins.git
+/plugin marketplace add https://github.com/hicham-bab/partner-sa-plugins.git
 /plugin install partner-sa-session-builder
 ```
 
-Because this repo is private, you need working git credentials. **HTTPS with `gh auth login` is the most
-reliable route**; SSH also works if your keys are set up:
+If you hit an auth error, **HTTPS with `gh auth login` is the most reliable route**; SSH also works if your keys
+are set up:
 
 ```
 gh auth login
@@ -43,7 +43,7 @@ To give a whole team the plugin without each person running commands, commit thi
     "dbt-partner-sa-plugins": {
       "source": {
         "source": "github",
-        "repo": "ORG/partner-sa-plugins"
+        "repo": "hicham-bab/partner-sa-plugins"
       }
     }
   },
@@ -58,12 +58,20 @@ On their next session the marketplace registers and the plugin installs itself.
 
 ### Getting updates
 
-```
-/plugin marketplace update
+A marketplace refresh updates the catalogue, **not your installed copy**. Both steps are needed:
+
+```bash
+claude plugin marketplace update dbt-partner-sa-plugins
+claude plugin update partner-sa-session-builder@dbt-partner-sa-plugins
 ```
 
-Updates apply from your **next** session, not the running one. The plugin is rebuilt and pushed here on the
-first of each month after its currency check, so refreshing monthly is enough.
+Then restart, since updates apply from your **next** session rather than the running one. Check with
+`claude plugin list`, which reports the installed version. If it says an older version than the
+[latest release](https://github.com/hicham-bab/partner-sa-plugins/releases/latest), the update step was skipped
+and you are running the old skill.
+
+The plugin is rebuilt and pushed here on the first of each month after its currency check, so refreshing monthly
+is enough.
 
 ---
 
@@ -75,8 +83,19 @@ Claude Code installs plugins from a directory; the desktop app installs from a `
 will offer to install it. The zip isn't tracked in git, so a clone won't contain one; the monthly currency
 check rebuilds it locally, and each release carries the matching build.
 
-Desktop installs don't auto-update, so replace the file when a new version ships. Check the version in
-`.claude-plugin/plugin.json` against your installed copy if you're unsure.
+**Desktop installs never auto-update, and a marketplace refresh does not touch them.** Replace the file when a
+new version ships, and check the version the app reports against the
+[latest release](https://github.com/hicham-bab/partner-sa-plugins/releases/latest). If the app installs the new
+copy alongside the old one rather than replacing it, remove the old one, otherwise the old skill keeps winning.
+
+This matters more than it sounds: running an old copy looks like a broken skill rather than a stale one. A
+version that asks for a single primary platform, or never asks which language you want, is 0.4.0.
+
+For Claude Code, a marketplace update alone is also not enough:
+
+```bash
+claude plugin update partner-sa-session-builder@dbt-partner-sa-plugins   # then restart
+```
 
 ---
 
@@ -104,8 +123,13 @@ Ask for a deck in plain language, or run the command:
 /session-deck
 ```
 
-It asks a short round of questions (session type, data platforms, audience, duration, vertical, Fivetran
-sources, language), then researches, **stops at an outline for your approval**, and only then builds the deck.
+First round, always: session type, which data platforms the partner works with (**several, if that's the
+truth**), the deck language, and duration. Second round, unless your brief already said: audience, dbt versus
+Fivetran fluency, Fivetran source category, vertical. Then follow-ups that actually apply, such as which
+platform is primary and which demo track to run.
+
+It then researches, **stops at an outline for your approval** showing where each slide comes from, and only then
+builds. Technical sessions also get a `demo-flow.md` with chapter timings and fallbacks.
 
 To re-verify the facts it relies on:
 

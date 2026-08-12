@@ -83,9 +83,12 @@ Assembled decks read as a patchwork unless the narrative layer is rewritten, so 
 and a fresh bridge line, and are normalised to one running example, one platform vocabulary, and one house
 style. If unifying a slide is more work than writing it, it gets written.
 
-**The corpus registry** lives at `skills/session-deck-builder/references/deck-corpus.local.md` and is
-deliberately untracked, since it holds internal presentation IDs and this repo is public. Keep your own, one row
-per deck: ID, date, language, and what it's best for. Without it the skill falls back to search and says so.
+**The corpus registry** holds internal presentation IDs, so it is never committed to this public repo. It takes
+whichever form suits your install: a gitignored `references/deck-corpus.local.md` for Claude Code, or, since a
+zip install has no writable plugin directory, **a Google Doc, Sheet, or Notion page you point the skill at** on
+Claude Desktop and Cowork. Pasting the table into the conversation works too. One row per deck: ID, date,
+language, and what it's best for. Without a registry the skill falls back to search, says so, and offers to
+build you one from what it found.
 
 ## Layout, fit, and diagrams
 
