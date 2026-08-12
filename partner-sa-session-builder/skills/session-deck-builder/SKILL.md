@@ -116,6 +116,10 @@ docs, always.
 Load the platform profile matching each confirmed platform from `references/platforms/`. If a platform isn't
 one of the five profiles, use `references/platforms/_other-platform.md` to build an ad-hoc profile at run time.
 
+**If the session is verticalized**, read `references/verticals.md` for the metrics, source systems, pain
+narrative, governance angle, and demo hook. Free-text verticals are built at run time by the procedure there,
+so an industry that wasn't in the option list is supported just as well as one that was.
+
 **If more than one platform was selected**, read `references/multi-platform.md` before researching. One
 platform carries the running example (the primary), and the others appear only as contrast. Research the
 primary fully; for secondary platforms, research only the points that actually diverge (incremental
@@ -266,5 +270,6 @@ a `.pptx`, since that loses the brand template. Offer the outline as a markdown 
 - `references/pricing.md`: optional pricing block for dbt and Fivetran, with verification rules
 - `references/lifecycle-and-migrations.md`: end-of-life dates and in-flight migrations, both sides
 - `references/multi-platform.md`: session shapes and real divergences when a partner runs several platforms
+- `references/verticals.md`: per-industry running example, metrics, sources, pain narrative, governance angle
 - `references/languages.md`: building decks in French, Spanish, Italian, German, or Japanese
 - `references/platforms/*.md`: per-platform narrative spine and doc lookup paths

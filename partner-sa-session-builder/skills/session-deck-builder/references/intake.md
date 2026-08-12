@@ -123,6 +123,12 @@ anything. Availability differs by exam and language and has changed recently.
 
 ## Call 2: asked unless already known (Q3, Q5, Q6, Q7)
 
+**Q5 and Q7 are only skippable if the brief states them explicitly.** Never infer fluency from a partner's size
+or logo, and never infer the vertical from their name; a partner called "Nordic Retail Group" may want a
+non-verticalized deck for reuse across their client base. These two change the output more than any other
+answer, so when in doubt, ask. Q3 and Q6 can be inferred more safely, and the inference goes in the closing
+echo.
+
 **Q3. Who's actually in the room?**
 - Data / analytics engineers: hands-on builders
 - Architects and tech leads: design and standards decisions
@@ -163,13 +169,26 @@ resolve exact connector names from the docs and never invent one. Wrong connecto
 Fivetran-strong partner are an instant credibility loss.
 
 **Q7. Should this be verticalized?**
+
+**The four options are chosen per partner, not fixed.** `verticals.md` carries a full profile for retail and
+e-commerce, financial services and insurance, healthcare and life sciences, manufacturing and supply chain,
+public sector, and media, telco, and subscription, plus a procedure for anything else. Show the three most
+plausible for this partner, from the brief, their client base, or their region, and always keep
+"not vertical-specific" as the first option.
+
+Default set when there is nothing to go on:
 - Not vertical-specific *(recommended)*: use a generally credible example
 - Retail / e-commerce
 - Financial services
 - Manufacturing / supply chain
 
-Healthcare and life sciences, public sector, media, and anything else arrive through the automatic "Other" as
-free text, and are equally well supported. Four listed, not seven, for the reason in governing rule 3.
+Anything not shown arrives through the automatic "Other" as free text and is **equally well supported**, because
+support lives in `verticals.md` rather than in this option list. Four options is the tool's cap, per governing
+rule 3; it is not the limit of what the skill can verticalize.
+
+→ *Always:* read `verticals.md` for whichever vertical comes back, including a free-text one. It carries the
+metrics, the source systems, the pain narrative, the governance angle, and the demo hook, and it states which
+of those are starting points to confirm with the partner.
 
 Vertical changes the running example (the metrics, the source systems, and the pain narrative), not the
 product content. Customer names, logos, and case studies must come from internal sources only; the skill

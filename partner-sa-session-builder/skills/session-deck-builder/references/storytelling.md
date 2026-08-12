@@ -33,7 +33,7 @@ story.
 
 ## Entry point by fluency
 
-From intake Q5.
+From intake Q5. The vertical from Q7 dresses whichever entry point this table selects; see `verticals.md`.
 
 | Stronger on | Open with |
 |---|---|

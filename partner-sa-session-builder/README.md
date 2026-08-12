@@ -111,12 +111,27 @@ bullet list. Hand-drawn shape diagrams are the last resort and are held to stric
 |---|---|
 | Data platform | Narrative spine, architecture diagram, vocabulary, adapter specifics, pitfalls |
 | dbt vs Fivetran fluency | Which act the story opens on |
-| Vertical + Fivetran source | The running example carried across every slide |
+| Vertical + Fivetran source | The running example, the metrics on the slides, the source systems in the demo, the pain the opening names, and which governance angle act 5 leads with |
 | Audience | Code density and whether labs or demo cues are used |
 | Duration | Slide count and number of labs |
 
 Supported platform profiles: Snowflake, Databricks, BigQuery, Microsoft Fabric (Warehouse and Lakehouse).
 Any other platform gets a profile built at run time from the adapter and destination docs.
+
+## Verticalization
+
+Six industries carry a full profile: retail and e-commerce, financial services and insurance, healthcare and
+life sciences, manufacturing and supply chain, public sector, and media, telco, and subscription. Each one
+supplies the running example, the metrics that matter, the typical source systems, the pain narrative for the
+opening slide, the governance angle act 5 should lead with, and a demo hook for the Fivetran chapter.
+
+Anything else is built at run time from the same shape, so an industry that isn't in the list is supported just
+as well as one that is. The question shows four options because the tool caps at four, and the four shown are
+picked for the partner rather than fixed; support does not live in the option list.
+
+Everything in a vertical profile is a starting point stated for you to correct, not an assertion. Metrics and
+source systems vary by company, exact Fivetran connector names are resolved from the docs at build time, and
+named customers still come from internal sources only.
 
 ## Languages
 
