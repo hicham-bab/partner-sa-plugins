@@ -139,9 +139,23 @@ function loadRegions() {
 
 function regionPreset(regionKey, band) {
   const data = loadRegions();
+
+  // A grouped alias is never blended: blending across a currency boundary or a
+  // two-fold rate gap produces a number nobody can defend.
+  if (data._aliases && data._aliases[regionKey]) {
+    fail(2, `"${regionKey}" covers more than one country with materially different rates. ` +
+            `Pick one: ${data._aliases[regionKey].join(', ')}. ${data._alias_note}`);
+  }
+
   const r = data.regions[regionKey];
   if (!r) {
-    fail(2, `unknown region "${regionKey}". Known: ${Object.keys(data.regions).join(', ')}`);
+    fail(2, `unknown region "${regionKey}". Known: ${Object.keys(data.regions).join(', ')}. ` +
+            `Groupings you can expand: ${Object.keys(data._aliases || {}).join(', ')}`);
+  }
+  if (r.unsourced) {
+    warn(`region "${regionKey}" (${r.label}) has NO country-specific rate study behind it. ` +
+         `The band is a placeholder derived from "${r.placeholderFrom}". ` +
+         `Say so on the slide and ask the partner for their rate card.`);
   }
   const pick = pair => {
     if (band === 'low') return pair[0];
@@ -158,6 +172,9 @@ function regionPreset(regionKey, band) {
     },
     meta: {
       region: regionKey, label: r.label, band, currency: r.currency,
+      unsourced: !!r.unsourced,
+      placeholderFrom: r.placeholderFrom || null,
+      employerContribution: r.employerContribution || null,
       bands: { archRate: r.archRate, senRate: r.senRate, engRate: r.engRate, loadedCost: r.loadedCost },
       notes: r.notes, sources: r.sources,
       retrieved: data._retrieved,

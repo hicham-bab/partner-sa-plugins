@@ -1,6 +1,6 @@
 {
   "name": "partner-sa-session-builder",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Two audiences, one branded template. For solutions architects: technical session decks and demo flows adapted to the partner's data platforms, Fivetran sources, vertical, and fluency. For partner managers: business-value decks driven by real Partner BVA runs, showing services revenue, client value, and whether the partner's team can deliver it. Includes a monthly currency check and a verification gate before any deck is called ready.",
   "author": {
     "name": "Hicham Babahmed"

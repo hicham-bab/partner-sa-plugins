@@ -295,13 +295,21 @@ triple what a partner there actually bills, and the same client therefore produc
 | Rate card | Three-year services revenue per client |
 |---|---|
 | App defaults | 423k to 779k |
-| Germany and Austria, top of band | 248k to 457k |
+| Germany, top of band | 248k to 457k |
 | France, top of band | 200k to 368k |
 | France, floor of band | 148k to 272k |
 
-So the skill asks for the partner's own rate card first, and falls back to a sourced regional band covering
-France, Germany and Austria, Benelux and the Nordics, southern Europe, central and eastern Europe, the UK, the
-US and Canada, and LatAm nearshore. Run the low and high ends and present the span.
+So the skill asks for the partner's own rate card first, and falls back to a sourced **per-country** band. Twelve
+countries are sourced individually: France, Germany, the Netherlands, Belgium, the UK, Ireland, Sweden, Denmark,
+Spain, Poland, the US and Canada, and LatAm nearshore. Run the low and high ends and present the span.
+
+**Per country, not per region**, because grouping hides differences of up to two times. Same client, top of each
+band: the Netherlands 280k to 516k, Denmark 278k to 512k, Germany 248k to 457k, France 200k to 368k, Ireland 159k
+to 293k, Spain 141k to 259k. Passing a grouping like `nordics` or `uki` asks you which country you mean rather
+than blending, and UKI in particular is two currencies with a threefold difference in employer contributions.
+
+Austria, Norway, Finland, Italy, and Portugal carry placeholder bands derived from a neighbour, and the runner
+prints a warning saying so whenever one is used.
 
 The bands are built from published contractor and freelance day rates, which are the only broadly sourced public
 figures, so they sit **below** a consultancy rate card and understate partner revenue. That is deliberate, it is
@@ -309,5 +317,5 @@ stated on the slide, and overstating a partner's revenue is the error you cannot
 live in `data/regional-rates.json`, `node scripts/bva-run.mjs --list-regions` prints them, and the currency check
 re-verifies them annually because the studies republish each year.
 
-Gaps are named rather than filled: India and offshore, Switzerland, the Middle East, Africa, and Japan have no
-sourced band here, so the skill asks instead of extrapolating.
+Gaps are named rather than filled: Switzerland, India and offshore, the Middle East, Africa, and Japan have no
+band at all, so the skill asks instead of extrapolating.
