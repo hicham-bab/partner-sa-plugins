@@ -44,6 +44,9 @@ content and official docs, telling one continuous story adapted to the partner i
    paste.
 9. **Text must fit the placeholder.** Per-placeholder character budgets and the Stage 4.5 fit check live in
    `references/layout-and-fit.md`. Never shrink a font, never set a font family, never truncate to fit.
+10. **Never call a deck ready without running verification.** `references/verification.md` is a gate, not a
+   suggestion: overlap, text fit, repeated wording, content, language, and template fidelity, reported as a
+   table over two passes. If it cannot be run, say the deck is unverified rather than ready.
 
 ## Workflow
 
@@ -200,13 +203,25 @@ For hackathons and workshops, produce a facilitator run-of-show as a separate ma
 wall-clock timings, checkpoint gates, and fallbacks for a broken environment. For Mixed sessions the demo flow
 merges into the run-of-show rather than shipping as two files.
 
-### Stage 4.5: Fit check
+### Stage 4.5: Verification gate
 
-Run the fit check in `references/layout-and-fit.md` before Stage 5. `list_slides`, then `get_slide` on every
-slide, and compare the text that is actually in each element against its budget. Rewrite every overflow.
+**Run `references/verification.md` in full.** Six checks, over two passes, reported as a table:
 
-This is the step whose absence produces text running over the layout, so it is not skippable and its result
-is reported as a number, not as an adjective.
+1. **Nothing overlaps.** Compute every element's box from its `transform` and `size` and test all pairs for
+   intersection. Text over text is always a defect, and so is anything off-canvas.
+2. **No text overflows its own box**, by the capacity arithmetic in `references/layout-and-fit.md`.
+3. **No wording repeats across slides**: no shared run of six or more words, no near-duplicate titles.
+4. **Content is correct**: sources resolved, release phases stated, no placeholders, ranges kept as ranges.
+5. **Language is consistent**, with product names and code left in English.
+6. **Every slide is on one of the eleven template layouts.**
+
+Fix everything flagged, then run the whole gate again. Pass 2 must show zero remaining, or the deck is reported
+as **not ready** with the failing slides named.
+
+This is the step whose absence produced text running over the layout, so it is not skippable, and its result is
+reported as a table rather than as an adjective. Geometry gives boxes rather than rendered glyphs, so name the
+five slides closest to their limit as worth a human glance, and never write "presentation ready" without that
+list attached.
 
 ### Stage 5: Self-check
 
@@ -220,7 +235,7 @@ Verify before handing over, and report the result honestly rather than claiming 
 - Acts 3 and 4 within ~20% of each other in slide count, unless intake said otherwise
 - Slide count matches the duration budget; timings sum to the stated length
 - Brand rules applied; no placeholder text left behind, and unused placeholders deleted rather than filled
-- **Fit check run on every slide**, with the count of slides checked and slides rewritten stated in the handover
+- **Verification gate run and reported**, two passes, zero remaining, with the near-limit slides named
 - **No two Text heavy slides adjacent**, no more than two consecutive slides on one layout, and a visual or
   section break at least every fourth slide
 - **The architecture anchor is a diagram**, either reused, embedded, or explicitly reserved for pasting, and
@@ -259,6 +274,7 @@ a `.pptx`, since that loses the brand template. Offer the outline as a markdown 
 - `references/storytelling.md`: five-act arc, bridge lines, continuity gates
 - `references/slide-library.md`: slide blocks mapped to template layouts, template ID, diagram reuse procedure
 - `references/layout-and-fit.md`: per-placeholder character budgets, the fit check, visual rhythm, prohibitions
+- `references/verification.md`: the six-check gate run before any deck is called ready, and the report format
 - `references/slide-selection.md`: building the corpus, scoring candidate slides, reuse thresholds, provenance
 - `references/session-recipes.md`: technical, enablement, and hackathon slide sequences
 - `references/demo-flows.md`: demo chapter pattern, the Foundations and Platform-and-AI tracks, demo discipline

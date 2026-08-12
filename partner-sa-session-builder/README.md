@@ -1,5 +1,13 @@
 # Partner SA session builder
 
+**Two audiences, one branded template.** `/session-deck` builds technical session decks and demo flows for
+solutions architects. `/partner-value` builds business-value decks for partner managers, driven by real Partner
+BVA runs. They share the template, the layout discipline, the brand rules, the six languages, and the
+verification gate; they differ in audience, argument, and depth.
+
+If you are a partner manager, the section at the end is the only one you need.
+
+
 Generate branded Google Slides decks for partner enablement sessions, hackathons, and workshops, adapted
 to the partner in the room and grounded in internal content plus official docs.
 
@@ -244,3 +252,36 @@ questions.
 
 The narrative spines in the platform profiles are drafts, not approved positioning; replace them with
 internal messaging as you validate it.
+
+---
+
+## For partner managers: `/partner-value`
+
+Sales enablement for a partner, in business terms. No adapters, no materializations, no live demo.
+
+It asks four questions: what the session is for, how big the partner's delivery team is, what their clients
+usually look like, and the language. Then it runs the
+[Partner BVA](https://hicham-bab.github.io/partner-bva/) for three scenarios, so the partner sees a spread
+rather than one number they will distrust, and shows you those scenarios and their assumptions before building
+anything.
+
+**The numbers come from the model, never from the assistant.** A bundled script fetches the published BVA page
+and calls the app's own calculation, so the figures cannot drift from what a partner sees in the browser. If no
+shell is available, which is common in the desktop app, it prints the inputs for you to enter and asks you to
+paste the result back, rather than guessing. Ranges stay ranges, a midpoint is never presented as the number,
+and every deck carries the model's own caveat that this is not a quote and not a forecast.
+
+**Every assumption is named.** The model's inputs are starting points, and four partnership levers, the reinvest
+share, the Wizard share, and the software margin all default to zero or to the partner's own estimate because no
+sourced benchmark exists for them. The deck lists what was supplied, so the partner can argue with the
+assumption instead of distrusting the number.
+
+The arc runs: why their clients are buying now, what the partner earns by workstream, what their client gets
+back, **whether they can actually deliver it**, how to sell it, and what happens next. That fourth part is the
+one that earns the rest: the model reports how many of these engagements the partner can support a year and
+which role runs out first, so a partner whose feasible revenue is a quarter of their nominal revenue has a
+hiring and certification conversation rather than a demand problem. If the model says over capacity, the slide
+says over capacity.
+
+You also get a share link per scenario, so the partner can reopen their own numbers, change a day rate, and
+watch it move.

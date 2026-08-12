@@ -10,7 +10,22 @@ Internal plugins for partner solutions architects. Maintained by Hicham Babahmed
 
 | Plugin | What it does |
 |---|---|
-| `partner-sa-session-builder` | Builds branded Google Slides decks for partner enablement sessions, hackathons, and workshops. Adapts to the partner's data platforms, Fivetran sources, vertical, and fluency. Produces decks in English, French, Spanish, Italian, German, or Japanese. Includes a monthly currency check for naming, pricing, and end-of-life changes. |
+| `partner-sa-session-builder` | Branded Google Slides decks for partner work, for two audiences. Six languages, a verification gate before any deck is called ready, and a monthly currency check for naming, pricing, and end-of-life changes. |
+
+| Command | Who it's for |
+|---|---|
+| `/session-deck` | **Solutions architects.** Technical session decks and demo flows, adapted to the partner's data platforms, Fivetran sources, vertical, and dbt/Fivetran fluency. |
+| `/partner-value` | **Partner managers.** Business-value decks driven by real Partner BVA runs: services revenue, what the client gets back, and whether the partner's team can actually deliver it. No technical depth. |
+| `/session-currency` | Re-verifies the facts both skills depend on. Monthly. |
+
+### If you're a partner manager
+
+You need `/partner-value` and nothing else on this page. It asks four business questions, runs the
+[Partner BVA](https://hicham-bab.github.io/partner-bva/) for a few scenarios sized to the partner and their
+clients, shows you the scenarios for approval, and then builds the deck. Every figure comes from the BVA model
+rather than from the assistant, ranges stay ranges, and it will tell you which assumptions it had to supply.
+
+You still need template access, below.
 
 ---
 

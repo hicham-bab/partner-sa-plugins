@@ -71,6 +71,8 @@ and what they own:
 | `multi-platform.md` | Incremental strategy and constraint enforcement matrices, multi-platform session shapes |
 | `languages.md` | Exam language availability, localised source availability, per-language layout rules |
 | `slide-library.md` | Template ID and layout IDs |
+| `../partner-value-builder/references/bva-inputs.md` | Input names against `node scripts/bva-run.mjs --list-inputs`. The BVA app is regenerated independently, so an input can be renamed or added without notice. Flag any drift rather than editing the model. |
+| `demo-flows.md` | Managed Data Lake Service naming and capabilities, dbt State and Wizard release phases, and whether Cost Insights or the dbt MCP server have moved |
 
 Then set the baseline date in `source-registry.md` to today.
 
