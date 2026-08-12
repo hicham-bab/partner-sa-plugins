@@ -1,0 +1,122 @@
+{
+  "_about": "Regional starting points for the three rate-shaped inputs the Partner BVA takes: what a partner bills per day by role, and what a client's engineer costs per year fully loaded. These are INPUTS, not model outputs. The model's own numbers still come from the model; these only replace its defaults with something regionally plausible when the partner has not given their rate card.",
+  "_retrieved": "2026-08-13",
+  "_reverify": "Rates move annually and the marketplace studies republish each year. Re-verify every 12 months, or sooner if a figure is challenged in the room. Tracked in the currency check.",
+  "_what_these_numbers_are": {
+    "dayRate": "What the partner charges the end client for one consultant-day, 8 hours. Built from published contractor and freelance day rates for data roles, which are the only broadly sourced public figures. A consultancy's rate card normally sits ABOVE a freelance rate because it carries overhead, delivery management, and margin, so these presets are a CONSERVATIVE FLOOR and bias partner revenue downward. Always ask for the partner's real rate card.",
+    "loadedCost": "Fully loaded annual cost of one data engineer on the CLIENT side: gross salary plus statutory employer contributions plus the usual overheads. Used for the capacity-released half of the model.",
+    "notForBudgeting": "Ranges, not quotes. Every figure varies by city, sector, security clearance, and stack."
+  },
+  "_model_defaults_note": "The BVA app defaults to archRate 2200, senRate 1800, engRate 1400 and loadedCost 130000 in euro. Those sit at or above the top of every European band below and read as a premium US or boutique-architect rate card. Leaving them unchanged for a continental European partner overstates services revenue substantially, which is the single most consequential input error available in this model.",
+
+  "regions": {
+    "france": {
+      "label": "France",
+      "currency": "€",
+      "engRate": [450, 550],
+      "senRate": [600, 900],
+      "archRate": [900, 1200],
+      "loadedCost": [85000, 115000],
+      "notes": "Île-de-France sits roughly 15 to 25 percent above the regions. Employer social contributions are the highest in this set at about 42 to 45 percent of gross, which is why loaded cost stays high even where salaries are moderate.",
+      "sources": [
+        "Malt / Free-Work / Hays France freelance TJM benchmarks 2026: data roles average about 533 EUR per day; data science 550 to 900; senior from about 640; consultant median about 675; Île-de-France about 620 against 450 to 540 in the regions",
+        "Boundless HQ, payroll in France 2026, and FRADECO LFSS 2026: employer contributions about 42 to 45 percent of gross"
+      ]
+    },
+    "dach": {
+      "label": "Germany, Austria",
+      "currency": "€",
+      "engRate": [640, 800],
+      "senRate": [760, 1040],
+      "archRate": [1040, 1360],
+      "loadedCost": [95000, 120000],
+      "notes": "Switzerland is materially higher and is not covered by this band. German employer contributions are roughly 20 to 21 percent and are capped, so loaded cost rises more slowly than in France at senior salaries.",
+      "sources": [
+        "freelancermap Freelancer-Kompass 2026, over 5,400 freelancers: average freelance hourly rate 103 EUR, IT median 95 EUR, data scientists and ML engineers 95 to 130 EUR per hour",
+        "PwC Worldwide Tax Summaries, Germany 2026: pension 18.6 percent to a 101,400 EUR ceiling and health 14.6 percent to 69,750 EUR, each split with the employer"
+      ]
+    },
+    "benelux-nordics": {
+      "label": "Netherlands, Belgium, Nordics",
+      "currency": "€",
+      "engRate": [640, 800],
+      "senRate": [800, 1100],
+      "archRate": [1000, 1400],
+      "loadedCost": [100000, 130000],
+      "notes": "The strongest European band after Switzerland. Denmark and Norway sit at the top, Belgium nearer the Dutch level.",
+      "sources": [
+        "Index.dev and Rise contractor rate surveys 2026: Western European senior roles 100 to 180 USD per hour, UK and Nordics above 120 USD per hour for advanced cloud and data work, Western European architects 80 to 100 EUR per hour"
+      ]
+    },
+    "southern-europe": {
+      "label": "Spain, Italy, Portugal",
+      "currency": "€",
+      "engRate": [320, 450],
+      "senRate": [450, 700],
+      "archRate": [700, 950],
+      "loadedCost": [55000, 80000],
+      "notes": "Lower rates and lower salaries together, so partner margin can be comparable to northern Europe even though the headline revenue per client is smaller.",
+      "sources": [
+        "Index.dev and TechStaQ European rate guides 2026: Spanish contractors roughly 37 to 75 USD per hour, Spain positioned between the Nordics and CEE"
+      ]
+    },
+    "cee": {
+      "label": "Poland and central and eastern Europe",
+      "currency": "€",
+      "engRate": [280, 400],
+      "senRate": [400, 600],
+      "archRate": [600, 850],
+      "loadedCost": [50000, 75000],
+      "notes": "Frequently the delivery arm for a western European partner, so a single deal can mix bands. Poland sits 25 to 40 percent above Romania and Ukraine and 30 to 50 percent below Germany for equivalent seniority.",
+      "sources": [
+        "Index.dev and MarsDevs global rate guides 2026: CEE senior developers 40 to 70 EUR per hour, Polish senior 50 to 75 USD per hour, AI and ML senior 75 to 115 USD per hour"
+      ]
+    },
+    "uk": {
+      "label": "United Kingdom",
+      "currency": "£",
+      "engRate": [400, 500],
+      "senRate": [450, 700],
+      "archRate": [700, 900],
+      "loadedCost": [85000, 110000],
+      "notes": "IR35 status changes what a contractor nets but not what a consultancy bills. Financial services and anything needing security clearance sit above these bands.",
+      "sources": [
+        "ITJobsWatch and ContractorUK, August 2026: senior data engineer contract benchmark about 555 GBP per day, data engineer median about 450",
+        "dataengineeringjobs.co.uk 2026 contractor guide: roughly 400 GBP junior to 700 GBP or more for lead and specialist roles"
+      ]
+    },
+    "us": {
+      "label": "United States and Canada",
+      "currency": "$",
+      "engRate": [720, 1280],
+      "senRate": [1200, 1480],
+      "archRate": [1760, 3200],
+      "loadedCost": [165000, 200000],
+      "notes": "The widest band in this file. Commoditised pipeline work is under pressure from AI tooling while scarce specialisms are not, so the engineer and architect bands have pulled apart rather than moved together.",
+      "sources": [
+        "dataconsultingfirms.com data engineering hourly rates 2026: US and Canada senior data engineers 150 to 185 USD per hour; commoditised ETL 90 to 160; AI engineering architects 220 to 400",
+        "WebFX big data consulting rates 2026: 120 to 350 USD per hour overall",
+        "Salary plus roughly 25 percent employer burden on a 130,000 to 160,000 USD senior salary"
+      ]
+    },
+    "latam-nearshore": {
+      "label": "Latin America, nearshore delivery",
+      "currency": "$",
+      "engRate": [480, 720],
+      "senRate": [640, 920],
+      "archRate": [900, 1300],
+      "loadedCost": [60000, 90000],
+      "notes": "Carried because a North American partner often delivers from here. Quoted with full time-zone overlap, which is the reason it competes.",
+      "sources": [
+        "dataconsultingfirms.com 2026: nearshore LatAm specialists 80 to 115 USD per hour at full time-zone overlap, a 40 to 50 percent reduction against onshore"
+      ]
+    }
+  },
+
+  "_gaps": [
+    "India and other offshore delivery: no figure here, because the searches behind this file did not produce a source specific to data engineering bill rates. Ask the partner rather than extrapolating.",
+    "Switzerland: materially above the DACH band and not separately sourced here.",
+    "Middle East and Africa: not covered.",
+    "Consultancy rate cards as opposed to contractor rates: not publicly available at any scale, which is the main reason these presets are a floor rather than a midpoint."
+  ]
+}

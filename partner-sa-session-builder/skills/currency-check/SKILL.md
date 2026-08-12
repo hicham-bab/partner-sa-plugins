@@ -73,6 +73,7 @@ and what they own:
 | `slide-library.md` | Template ID and layout IDs |
 | `../partner-value-builder/references/bva-inputs.md` | Input names against `node scripts/bva-run.mjs --list-inputs`. The BVA app is regenerated independently, so an input can be renamed or added without notice. Flag any drift rather than editing the model. |
 | `demo-flows.md` | Managed Data Lake Service naming and capabilities, dbt State and Wizard release phases, and whether Cost Insights or the dbt MCP server have moved |
+| `data/regional-rates.json` | Day-rate bands and employer contribution rates, **annually**. The marketplace studies behind them republish each year, and a rate figure older than 12 months is what a practice lead catches. Update `_retrieved` when you do |
 
 Then set the baseline date in `source-registry.md` to today.
 

@@ -285,3 +285,29 @@ says over capacity.
 
 You also get a share link per scenario, so the partner can reopen their own numbers, change a day rate, and
 watch it move.
+
+### Rates are regional, and this matters more than anything else in the model
+
+The BVA app defaults to 2,200 for an architect, 1,800 for a senior engineer, and 1,400 for an engineer per day.
+That is a premium rate card. Against published 2026 market data for continental Europe it is roughly double to
+triple what a partner there actually bills, and the same client therefore produces very different revenue:
+
+| Rate card | Three-year services revenue per client |
+|---|---|
+| App defaults | 423k to 779k |
+| Germany and Austria, top of band | 248k to 457k |
+| France, top of band | 200k to 368k |
+| France, floor of band | 148k to 272k |
+
+So the skill asks for the partner's own rate card first, and falls back to a sourced regional band covering
+France, Germany and Austria, Benelux and the Nordics, southern Europe, central and eastern Europe, the UK, the
+US and Canada, and LatAm nearshore. Run the low and high ends and present the span.
+
+The bands are built from published contractor and freelance day rates, which are the only broadly sourced public
+figures, so they sit **below** a consultancy rate card and understate partner revenue. That is deliberate, it is
+stated on the slide, and overstating a partner's revenue is the error you cannot recover from. Sources and dates
+live in `data/regional-rates.json`, `node scripts/bva-run.mjs --list-regions` prints them, and the currency check
+re-verifies them annually because the studies republish each year.
+
+Gaps are named rather than filled: India and offshore, Switzerland, the Middle East, Africa, and Japan have no
+sourced band here, so the skill asks instead of extrapolating.

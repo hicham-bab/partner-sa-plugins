@@ -20,7 +20,7 @@ That prints the live defaults and the role definitions. If it disagrees with any
 | Input | In plain terms | Notes |
 |---|---|---|
 | `archN`, `senN`, `engN` | How many architects, senior engineers, engineers | Drives both the rate and the capacity check |
-| `archRate`, `senRate`, `engRate` | What each bills per day | Their real rates if they will share them |
+| `archRate`, `senRate`, `engRate` | What each bills per day | **The most consequential input in the model.** Their real rates if they will share them, otherwise a sourced regional band from `regions.md`. The app's defaults are a premium rate card and overstate continental Europe by two to three times |
 | `billableDays` | Billable days a year per person | 200 is the model's default |
 | `dealsPerYear` | How many clients like this they expect to do a year | The number the capacity check tests |
 | `reinvestShare` | Of the budget the client frees up, what share the partner wins as services | Their assumption. No benchmark exists |
@@ -58,8 +58,8 @@ the partner manager gives a figure, and label them as the partner's estimate whe
 
 ## Mapping the discovery answers
 
-**Team size** sets the role mix. Rates stay at the model's defaults unless the partner manager knows better,
-and get labelled as assumptions when they don't.
+**Team size** sets the role mix. Rates come from the partner if they have them, otherwise from the regional band
+in `regions.md`, and never from the app's defaults for a European partner.
 
 | Answer | `archN` | `senN` | `engN` | `dealsPerYear` |
 |---|---|---|---|---|

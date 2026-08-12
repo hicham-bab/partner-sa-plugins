@@ -30,17 +30,21 @@ what to do next.
    drop the low end because the high one sells better.
 3. **Not a quote, not a forecast.** The app says so and every deck must too, on the slide that carries figures,
    not only in an appendix.
-4. **Defaults are assumptions, and get labelled.** The model's own comments are explicit that its inputs are
+4. **Never leave the default rate card in place for a European partner.** The app defaults to 2,200, 1,800, and
+   1,400 a day, which is a premium rate card and overstates continental European services revenue by roughly two
+   to three times. Ask for the partner's real rates; failing that apply a sourced regional band from
+   `references/regions.md`, run its low and high, and say on the slide which you used.
+5. **Defaults are assumptions, and get labelled.** The model's own comments are explicit that its inputs are
    starting points. Four partnership levers, the reinvest share, the Wizard share, and the software margin all
    default to zero or to the partner's own estimate because no sourced benchmark exists. Never fill one in
    silently, and never present one as a benchmark.
-5. **No customer names, logos, or case studies** unless resolved from internal content. Same rule as
+6. **No customer names, logos, or case studies** unless resolved from internal content. Same rule as
    `../session-deck-builder/references/research-protocol.md`.
-6. **Say what the partner has to believe.** Every scenario rests on inputs somebody guessed. List them on the
+7. **Say what the partner has to believe.** Every scenario rests on inputs somebody guessed. List them on the
    slide, so the partner can argue with the assumption instead of distrusting the number.
-7. **Stop at the scenario gate.** Show the scenarios and their inputs, and get them approved before building
+8. **Stop at the scenario gate.** Show the scenarios and their inputs, and get them approved before building
    any slides.
-8. **Run the verification gate.** `../session-deck-builder/references/verification.md` applies to this deck too.
+9. **Run the verification gate.** `../session-deck-builder/references/verification.md` applies to this deck too.
 
 ## Workflow
 
@@ -83,9 +87,14 @@ Four questions and four options, per the tool's limits. Italian, Japanese, and a
 automatic "Other". Currency follows the language unless they say otherwise, and Japanese opens in yen because
 the model does.
 
-**Then ask once, in prose, not as a question card:** "do you have real figures for this partner, their day
-rates, team mix, or a prospect's estate? If not I will use the model's starting points and label them as
-assumptions." Accept a paste of anything they have.
+**Then ask once, in prose, not as a question card:** "do you have this partner's day rates for an architect, a
+senior engineer, and an engineer? And any real figures for their team or a prospect's estate?" Their rate card is
+the most consequential input in the model, and a partner manager usually knows it or can get it in a message.
+Accept a paste of anything they have.
+
+**Work out the region** from the deck language, the partner's location, or the brief, and confirm it in the
+closing echo rather than spending a question on it. Ask only when the language is English, since UK, US, Nordics,
+and Benelux differ more than any other pair. See `references/regions.md`.
 
 ### Stage 2: Build the scenarios
 
@@ -96,9 +105,17 @@ their large client. For a named prospect, run that prospect plus one smaller and
 Run them:
 
 ```bash
-node scripts/bva-run.mjs --scenarios scenarios.json --lang de --account "Partner or prospect name" \
-  --prepared-by "Your name, dbt Labs"
+# With the partner's own rate card, which always wins:
+node scripts/bva-run.mjs --scenarios scenarios.json --lang de \
+  --account "Partner or prospect name" --prepared-by "Your name, dbt Labs"
+
+# Without it, apply a sourced regional band and run both ends:
+node scripts/bva-run.mjs --scenarios scenarios.json --lang de --region dach --rate-band low
+node scripts/bva-run.mjs --scenarios scenarios.json --lang de --region dach --rate-band high
 ```
+
+`--list-regions` prints the bands and their sources. A partner's own figure always beats a benchmark, and an
+explicit scenario input always overrides the regional preset.
 
 The script fetches the published app and calls the app's own model, so it cannot drift from what the partner
 sees in the browser. Output is JSON per scenario: partner revenue by year and over three years, practice
@@ -154,5 +171,6 @@ over:
 ## References
 
 - `references/bva-inputs.md`: the model's inputs in business language, and how practice and client size map onto them
+- `references/regions.md`: regional day-rate bands with sources, why the app defaults overstate Europe, and the gaps
 - `references/business-narrative.md`: the six-part arc for a commercial audience, and the slide blocks
 - `../session-deck-builder/references/`: template, layouts, fit, brand voice, languages, verticals, verification

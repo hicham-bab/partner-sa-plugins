@@ -18,6 +18,9 @@
  *   node bva-run.mjs --lang de --currency '€'
  *   node bva-run.mjs --source ./bva.html               local copy, offline
  *   node bva-run.mjs --list-inputs                     print the input schema
+ *   node bva-run.mjs --region france                   apply a regional rate card
+ *   node bva-run.mjs --region dach --rate-band high    low (default), mid, or high
+ *   node bva-run.mjs --list-regions                    print the regional bands and sources
  *
  * scenarios.json is either an array of {name, inputs} or an object of
  * name -> inputs.
@@ -123,6 +126,46 @@ function buildContext(js, language) {
   return ctx;
 }
 
+/* ---------- regional rate presets ---------- */
+/* These are inputs, not model output. They replace the app's default rate card
+ * with something regionally plausible when the partner has not given theirs.
+ * Sourced, dated, and deliberately conservative: see data/regional-rates.json.
+ */
+function loadRegions() {
+  const path = new URL('../data/regional-rates.json', import.meta.url);
+  try { return JSON.parse(readFileSync(path, 'utf8')); }
+  catch (e) { fail(3, `could not read data/regional-rates.json: ${e.message}`); }
+}
+
+function regionPreset(regionKey, band) {
+  const data = loadRegions();
+  const r = data.regions[regionKey];
+  if (!r) {
+    fail(2, `unknown region "${regionKey}". Known: ${Object.keys(data.regions).join(', ')}`);
+  }
+  const pick = pair => {
+    if (band === 'low') return pair[0];
+    if (band === 'high') return pair[1];
+    return Math.round((pair[0] + pair[1]) / 2);
+  };
+  return {
+    inputs: {
+      currency: r.currency,
+      archRate: pick(r.archRate),
+      senRate: pick(r.senRate),
+      engRate: pick(r.engRate),
+      loadedCost: pick(r.loadedCost)
+    },
+    meta: {
+      region: regionKey, label: r.label, band, currency: r.currency,
+      bands: { archRate: r.archRate, senRate: r.senRate, engRate: r.engRate, loadedCost: r.loadedCost },
+      notes: r.notes, sources: r.sources,
+      retrieved: data._retrieved,
+      caveat: data._what_these_numbers_are.dayRate
+    }
+  };
+}
+
 /* ---------- run one scenario ---------- */
 function runScenario(js, name, inputs, language) {
   const ctx = buildContext(js, language);
@@ -133,6 +176,15 @@ function runScenario(js, name, inputs, language) {
   if (unknown.length) {
     warn(`scenario "${name}": ignoring unknown input(s): ${unknown.join(', ')}`);
   }
+  // Region preset first, so an explicit scenario input always wins over it.
+  let regionMeta = null;
+  const regionKey = arg('region');
+  if (regionKey) {
+    const preset = regionPreset(regionKey, arg('rate-band', 'low'));
+    regionMeta = preset.meta;
+    for (const [k, v] of Object.entries(preset.inputs)) { ctx.calc[k] = v; }
+  }
+
   const applied = {};
   for (const [k, v] of Object.entries(inputs || {})) {
     if (known.includes(k)) { ctx.calc[k] = v; applied[k] = v; }
@@ -162,6 +214,9 @@ function runScenario(js, name, inputs, language) {
     language,
     currency: ctx.calc.currency,
     motion: ctx.calc.move,
+    region: regionMeta,
+    rateCard: { archRate: ctx.calc.archRate, senRate: ctx.calc.senRate, engRate: ctx.calc.engRate,
+                loadedCost: ctx.calc.loadedCost },
     inputsApplied: applied,
     partner: {
       year1: [r(m.y1Low), r(m.y1High)],
@@ -202,6 +257,16 @@ const blocks = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].map(m
 if (!blocks.length) fail(4, 'no script found in the page');
 const js = blocks.join('\n;\n');
 
+if (flag('list-regions')) {
+  const data = loadRegions();
+  console.log(JSON.stringify({
+    retrieved: data._retrieved, reverify: data._reverify,
+    whatTheseAre: data._what_these_numbers_are, modelDefaults: data._model_defaults_note,
+    regions: data.regions, gaps: data._gaps
+  }, null, 2));
+  process.exit(0);
+}
+
 if (flag('list-inputs')) {
   const ctx = buildContext(js, lang);
   console.log(JSON.stringify({
@@ -239,6 +304,8 @@ console.log(JSON.stringify({
   source: source || APP_URL,
   generated: new Date().toISOString().slice(0, 10),
   disclaimer: 'Ranges from the Partner BVA model. Not a quote, not a forecast. ' +
-              'Present ranges as ranges and never a midpoint as the number.',
+              'Present ranges as ranges and never a midpoint as the number. ' +
+              'Where a region preset was applied, the rate card is a sourced regional starting point and a ' +
+              'conservative floor, not the partner\'s rate card. Ask for theirs and rerun.',
   results
 }, null, 2));
