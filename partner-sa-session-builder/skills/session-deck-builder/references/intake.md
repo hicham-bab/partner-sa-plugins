@@ -2,10 +2,14 @@
 
 Run this at Stage 1. Use the AskUserQuestion tool, grouped into the three calls below.
 
-**Design target: two rounds of clicking, under 60 seconds, then straight to the outline.** A third short
-round is fine when follow-ups genuinely apply. Every question
-has to earn its place by changing the output. If an answer wouldn't change a slide, it isn't a question,
-it's a default.
+**Design target: capture the context, not the clock.** Four rounds of four questions is the normal shape, and
+sixteen answers make a materially better deck than eight. Thoroughness is the default here; brevity is opt-in.
+
+If the user says "keep it short", "quick one", or answers the first round and asks you to get on with it, drop to
+calls 1 and 2 and infer the rest, saying the inferences in the closing echo. Otherwise ask the full set.
+
+Every question still has to change the output. None of these are filler: each one moves a slide, a diagram, the
+running example, or the demo.
 
 ---
 
@@ -25,8 +29,9 @@ it's a default.
 5. **Confirm platforms, never infer them.** The only field exempt from rule 1. Platform is multi-select; if
    more than one is chosen, always establish which is primary.
 6. **Every question leads with a recommended option**, so the fast path is click-accept-accept.
-7. **Stop when you have enough.** If call 1 settles call 2, skip it. Asking questions you can already
-   answer is the opposite of sharp.
+7. **Do not stop early to be polite.** Skip only what the brief or a paste has genuinely answered, and never
+   skip a question because four rounds feels like a lot. A missing answer becomes a generic slide, which costs
+   the user far more than a click. If they ask for brevity, comply and say what you inferred.
 
 ---
 
@@ -64,8 +69,11 @@ gets dropped.
 | Call | Questions | Always? |
 |---|---|---|
 | 1 | Q1 session type · Q2 platforms · Q2b **deck language** · Q4 duration | Always, even with a detailed brief, minus anything already stated |
-| 2 | Q3 audience · Q5 dbt/Fivetran fluency · Q6 Fivetran source · Q7 vertical | Unless the brief already settles them |
-| 3 | Primary platform · Fabric adapter · speaker-notes language · Q8 outcome | Only the ones that apply, batched into a single call |
+| 2 | Q3 audience · Q5 dbt/Fivetran fluency · Q7 vertical · Q9 **what they use today** | Always. These four shape the argument more than anything in call 1 |
+| 3 | Q10 which tool · Q11 what's driving it · Q6 Fivetran source · Q8 outcome | Normally, unless the brief settles them |
+| 4 | Primary platform · demo track · Fabric adapter · speaker-notes language | Only the ones that apply, batched into one call |
+
+Then the closing catch-all in prose, always.
 
 **Q2b is never dropped, never merged, never inferred from the partner's country.** A French partner may well
 want an English deck for reuse, and a deck in the wrong language is a total loss rather than a rough edge. If
@@ -245,6 +253,48 @@ partners run several, which is the thing the multi-platform handling exists for.
 The demo track is described in `demo-flows.md`. Foundations is the Fivetran connector, Managed Data Lake
 Service, and dbt basics. Platform and AI is dbt Wizard, semantic layer, PR, orchestration and jobs, dbt State,
 Cost Insights, and the dbt MCP server.
+
+**Q9. Where does their transformation logic live today?**
+- Legacy ETL tool: Talend, Informatica, DataStage, SSIS
+- Stored procedures and notebooks
+- Cloud ELT tool: Matillion, Azure Data Factory, Glue
+- Self-hosted dbt Core
+
+A mixture, or nothing established yet, arrives through the automatic "Other" and both are common answers. This is
+the question that decides the pain in act 1, the before-and-after in acts 3 and 4, and what the demo converts, so
+**never infer it from the platform**. A Databricks shop can be running Informatica, notebooks, or dbt Core, and
+those are three different sessions.
+
+→ *Always:* read `legacy-stacks.md` for whichever answer comes back. It carries the story, the demo, the
+migration gotcha, and the vocabulary matching the Partner BVA's own `today` field so a technical session and a
+business case categorise the same client identically.
+
+**Q10. Which tool, specifically?**
+
+Asked in call 3 when Q9 named a category. Show the four most likely for that category and let "Other" take the
+rest:
+
+| Q9 answer | Options to show |
+|---|---|
+| Legacy ETL | Talend · Informatica · DataStage · SSIS |
+| Stored procedures | SQL Server · Oracle · Snowflake · Databricks notebooks |
+| Cloud ELT | Matillion · Azure Data Factory · AWS Glue · Fivetran Transformations |
+| dbt Core | Airflow · Dagster · cron · Prefect, meaning what orchestrates it |
+
+Informatica and Talend are different conversations, not one legacy conversation, so the specific name matters.
+
+→ Also worth asking as free text when they know it: **how many jobs, procedures, or pipelines**. It is the
+scoping unit for a migration and the BVA's volume input.
+
+**Q11. What's making them look at this now?**
+- A licence renewal coming up
+- An AI initiative with a deadline
+- Cost pressure from finance
+- The team cannot deliver fast enough
+
+A wider platform migration, or no clear driver, arrive through "Other". Matches the Partner BVA's `driver` field.
+The trigger decides the urgency slide and often the running example: a renewal has a date, an AI programme has a
+deadline, cost pressure has a sponsor in finance. No trigger usually means no deadline.
 
 **Q8. What should they be able to do afterward?**
 - Position dbt + Fivetran to their own clients

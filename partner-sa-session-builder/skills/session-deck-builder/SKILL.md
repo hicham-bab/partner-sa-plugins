@@ -121,9 +121,19 @@ prose, numbered, and say explicitly that question 2 takes several answers: "list
 Never let a missing multi-select turn question 2 into a one-of-four choice, and never let a prose fallback
 quietly drop the language question. The four questions are the requirement; the widget is not.
 
-**Call 2**, unless the brief settles them: audience, dbt/Fivetran fluency, Fivetran source category, vertical.
-**Call 3**, only the follow-ups that apply, priority order in `references/intake.md`: primary platform, demo
-track, Fabric adapter, speaker-notes language.
+**Call 2, always**: audience, dbt/Fivetran fluency, vertical, and **where their transformation logic lives
+today** (legacy ETL, stored procedures and notebooks, cloud ELT, or self-hosted dbt Core). These four shape the
+argument more than anything in call 1, and none is inferable from the platform.
+
+**Call 3, normally**: which tool specifically (Talend and Informatica are different conversations), what is
+driving the change now, Fivetran source category, and the outcome.
+
+**Call 4, only what applies**: primary platform, demo track, Fabric adapter, speaker-notes language.
+
+Then the closing catch-all in prose, always asked.
+
+**Four rounds is the normal shape, and sixteen answers make a materially better deck than eight.** Do not trim
+the set to seem efficient. If the user asks for brevity, run calls 1 and 2 and say what you inferred.
 
 The deck language changes Stage 2 as well as Stage 4: research the target language first rather than
 translating at the end.
@@ -135,6 +145,9 @@ docs, always.
 
 Load the platform profile matching each confirmed platform from `references/platforms/`. If a platform isn't
 one of the five profiles, use `references/platforms/_other-platform.md` to build an ad-hoc profile at run time.
+
+**Read `references/legacy-stacks.md`** for whatever Q9 and Q10 returned. Where the client is coming from decides
+act 1's pain, the before-and-after in acts 3 and 4, what the demo converts, and how the migration is scoped.
 
 **If the session is verticalized**, read `references/verticals.md` for the metrics, source systems, pain
 narrative, governance angle, and demo hook. Free-text verticals are built at run time by the procedure there,
@@ -304,5 +317,6 @@ a `.pptx`, since that loses the brand template. Offer the outline as a markdown 
 - `references/lifecycle-and-migrations.md`: end-of-life dates and in-flight migrations, both sides
 - `references/multi-platform.md`: session shapes and real divergences when a partner runs several platforms
 - `references/verticals.md`: per-industry running example, metrics, sources, pain narrative, governance angle
+- `references/legacy-stacks.md`: Talend, Informatica, Matillion, stored procedures, dbt Core and the rest, and what each changes
 - `references/languages.md`: building decks in French, Spanish, Italian, German, or Japanese
 - `references/platforms/*.md`: per-platform narrative spine and doc lookup paths
