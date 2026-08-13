@@ -30,6 +30,32 @@ it's a default.
 
 ---
 
+## Step 0: invite context before you ask anything
+
+**Always first, always short.** A question card is a poor input surface for everything a user knows, and it is
+demoralising to be handed four multiple-choice questions when you were about to paste a transcript. So open by
+inviting the paste, then ask only for what is still missing.
+
+What is worth naming in the invitation, because each one changes the output:
+
+| Offer this | What it changes |
+|---|---|
+| A brief, agenda, transcript, or notes | Removes most of the questions entirely |
+| Decks or slides to reuse, by link or ID | Seeds the corpus in `slide-selection.md`, which is the whole quality difference |
+| The partner's name and previous sessions | Stops the deck repeating what they already saw |
+| Topics they specifically asked for | Becomes a fixed block in the outline |
+| Anything to avoid | Saves an awkward correction at the outline gate |
+| A fixed agenda or timing constraint | Drives the slide and lab budget directly |
+| Their own template or brand copy | Overrides the default template ID |
+| A prospect or client name to build the example around | Replaces the generic running example |
+
+Then send the card for the gaps only. **If the paste answers everything, send no card**, and confirm the
+profile in prose. If the user skips the card, ask the four in prose rather than proceeding on defaults.
+
+Accept more context at any time before the outline gate, and fold it in rather than saying it arrived too late.
+
+---
+
 ## The three calls
 
 Fixed membership. Follow this table rather than regrouping on the fly, because regrouping is how a question
@@ -253,13 +279,14 @@ Stated in the closing echo so you can correct them in passing, never as separate
 
 ---
 
-## Optional final prompt
+## Closing catch-all, always asked
 
-> "Anything else? Partner name, prior sessions, sensitivities, topics they specifically asked for, or a
-> transcript / notes / past deck to draw from."
+> "Anything else before I research? Partner name, prior sessions, sensitivities, topics they specifically asked
+> for, or a transcript, notes, or past deck to draw from."
 
-Offered once, explicitly skippable. An attached transcript or past deck is the highest-value input
-available, mine it before general search.
+Asked once, in prose, and explicitly skippable, but **it is asked**, not offered only when convenient. It is the
+second chance at everything in step 0, and it costs one line. An attached transcript or past deck is the
+highest-value input available, so mine it before any general search.
 
 ---
 

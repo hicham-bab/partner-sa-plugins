@@ -53,6 +53,15 @@ what to do next.
 This audience is not technical and did not ask for a questionnaire. **Four questions, one call, business
 language only.** No adapters, no materializations, no connector categories.
 
+**Open with the invitation first, before the card.** Short, in your own words:
+
+> Paste anything you have and I'll use it instead of asking: the partner's name, their rate card, notes from
+> your last conversation, a prospect's details, an existing business case, or decks to reuse. Otherwise answer
+> the questions below.
+
+Shrink the card to what the paste didn't answer, and send no card at all if it answered everything. If they
+skip it, ask in prose rather than running on defaults.
+
 ```
 1. header "Goal"        multiSelect: false
    "What is this session for?"

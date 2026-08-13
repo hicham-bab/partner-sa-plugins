@@ -55,8 +55,25 @@ Run these five stages in order. Announce nothing; just do the work and surface t
 ### Stage 1: Discovery
 
 Parse any brief the user already gave, ask only the gaps, and close with the one-paragraph session profile
-echo for confirmation. `references/intake.md` holds the routing logic and the follow-ups; **call 1 below is
-literal and is not to be reworded, reordered, or compressed.**
+echo for confirmation. `references/intake.md` holds the routing logic and the follow-ups.
+
+**Open with the invitation, before any question card.** The card is for what you don't already know, never the
+only place the user can speak. Send this first, in your own words, short:
+
+> Paste anything you already have and I'll use it instead of asking: a brief, agenda, transcript, or notes;
+> decks or slides to reuse, by link or ID; the partner's name and what happened last time; topics they asked
+> for, and anything to avoid; a fixed agenda or timing constraints. Otherwise answer the questions below.
+
+Then the card, **shrunk to what the paste didn't answer.** If it answered everything, send no card at all and
+confirm the profile in prose instead. A card that asks what the user just told you reads as not listening.
+
+**If they choose Skip, do not fall through to defaults.** Ask the four in prose and wait. Skip means the card
+is in the way, not that the answers don't matter.
+
+**Context can arrive at any point up to the outline gate.** Fold it in, and rerun whatever it affects, rather
+than telling the user it is too late.
+
+**Call 1 below is literal and is not to be reworded, reordered, or compressed.**
 
 **Call 1, exactly these four questions, in one AskUserQuestion call.** Drop only a question the brief has
 already answered, and never substitute a different question for a dropped one:
